@@ -1,6 +1,6 @@
 local config = {
 
-  -- Configure AstroNvim updates
+  -- Cinfigure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
     channel = "stable", -- "stable" or "nightly"
@@ -93,6 +93,15 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
+      --
+      {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+          -- you can configure Hop the way you like here; see :h hop-config
+          require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+      }
     },
     -- All other entries override the setup() call for default plugins
     ["null-ls"] = function(config)
@@ -218,7 +227,12 @@ local config = {
     -- first key is the mode
     n = {
       -- second key is the lefthand side of the map
+      ["s"] = { "<C-w>", desc = "Navigate windows replacing <C-w>"},
       ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+      ["<C-h>"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer tab" },
+      ["<C-j>"] = false,
+      ["<C-k>"] = false,
+      ["<C-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" },
     },
     t = {
       -- setting a mapping to false will disable it
@@ -229,7 +243,14 @@ local config = {
   -- This function is run last
   -- good place to configuring augroups/autocommands and custom filetypes
   polish = function()
+    local opts = { noremap = true, silent = true }
+    local keymap = vim.api.nvim_set_keymap
+
     -- Set key binding
+    -- "s" is useless so use it navigation instead
+    keymap("", "<S-h>", "^", opts)
+    keymap("", "<S-l>", "$", opts)
+
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
     vim.api.nvim_create_autocmd("BufWritePost", {
@@ -253,5 +274,6 @@ local config = {
     -- }
   end,
 }
+
 
 return config
