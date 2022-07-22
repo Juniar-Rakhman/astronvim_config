@@ -247,9 +247,12 @@ local config = {
     local keymap = vim.api.nvim_set_keymap
 
     -- Set key binding
-    -- "s" is useless so use it navigation instead
     keymap("", "<S-h>", "^", opts)
     keymap("", "<S-l>", "$", opts)
+
+    require("hop").setup()
+    keymap("n", "<C-j>", "<cmd>lua require'hop'.hint_char2()<cr>", opts)
+    keymap("n", "<C-k>", "<cmd>lua require'hop'.hint_lines()<cr>", opts)
 
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
