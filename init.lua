@@ -17,6 +17,31 @@ local config = {
     -- },
   },
 
+ -- Set dashboard header
+  header = {
+    " ",
+    " ",
+    " ",
+    " ",
+    " ",
+    " █████╗ ███████╗██╗███╗   ███╗ ██████╗ ",
+    "██╔══██╗██╔════╝██║████╗ ████║██╔═══██╗",
+    "███████║███████╗██║██╔████╔██║██║   ██║",
+    "██╔══██║╚════██║██║██║╚██╔╝██║██║   ██║",
+    "██║  ██║███████║██║██║ ╚═╝ ██║╚██████╔╝",
+    "╚═╝  ╚═╝╚══════╝╚═╝╚═╝     ╚═╝ ╚═════╝ ",
+    "        ██╗   ██╗██╗███╗   ███╗        ",
+    "        ██║   ██║██║████╗ ████║        ",
+    "        ██║   ██║██║██╔████╔██║        ",
+    "        ╚██╗ ██╔╝██║██║╚██╔╝██║        ",
+    "         ╚████╔╝ ██║██║ ╚═╝ ██║        ",
+    "          ╚═══╝  ╚═╝╚═╝     ╚═╝        ",
+    "                                       ",
+    " ",
+    " ",
+    " ",
+  },
+
   -- Set colorscheme
   colorscheme = "default_theme",
 
@@ -86,20 +111,35 @@ local config = {
 
       -- You can also add new plugins here as well:
       -- { "andweeb/presence.nvim" },
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   event = "BufRead",
-      --   config = function()
-      --     require("lsp_signature").setup()
-      --   end,
-      -- },
-      --
+      {
+        'ray-x/guihua.lua',
+        config = function ()
+          require('guihua.maps').setup({
+            maps = {
+              close_view = '<C-x>',
+            },
+          })
+        end
+      },
+      {
+        "ray-x/lsp_signature.nvim",
+        event = "BufRead",
+        config = function()
+          require("lsp_signature").setup()
+        end,
+      },
       {
         'phaazon/hop.nvim',
         branch = 'v2', -- optional but strongly recommended
         config = function()
           -- you can configure Hop the way you like here; see :h hop-config
           require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+        end
+      },
+      {
+        'ray-x/go.nvim',
+        config = function ()
+          require'go'.setup {}
         end
       }
     },
@@ -250,12 +290,14 @@ local config = {
     keymap("", "<S-h>", "^", opts)
     keymap("", "<S-l>", "$", opts)
 
+    -- Hop configuration 
     require("hop").setup()
-    keymap("n", "<C-j>", "<cmd>lua require'hop'.hint_words()<cr>", opts)
+    keymap("n", "<C-j>", "<cmd>lua require'hop'.hint_char2()<cr>", opts)
     keymap("n", "<C-k>", "<cmd>lua require'hop'.hint_lines()<cr>", opts)
     vim.cmd("hi HopNextKey guifg=#ff9900")
     vim.cmd("hi HopNextKey1 guifg=#ff9900")
     vim.cmd("hi HopNextKey2 guifg=#ff9900")
+
 
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
@@ -265,6 +307,8 @@ local config = {
       pattern = "plugins.lua",
       command = "source <afile> | PackerSync",
     })
+    -- Run gofmt + goimport on save
+    vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
 
     -- Set up custom filetypes
     -- vim.filetype.add {
