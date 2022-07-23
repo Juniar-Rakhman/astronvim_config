@@ -251,8 +251,11 @@ local config = {
     keymap("", "<S-l>", "$", opts)
 
     require("hop").setup()
-    keymap("n", "<C-j>", "<cmd>lua require'hop'.hint_char2()<cr>", opts)
+    keymap("n", "<C-j>", "<cmd>lua require'hop'.hint_words()<cr>", opts)
     keymap("n", "<C-k>", "<cmd>lua require'hop'.hint_lines()<cr>", opts)
+    vim.cmd("hi HopNextKey guifg=#ff9900")
+    vim.cmd("hi HopNextKey1 guifg=#ff9900")
+    vim.cmd("hi HopNextKey2 guifg=#ff9900")
 
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", { clear = true })
