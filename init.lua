@@ -26,21 +26,21 @@ local config = {
   },
 
   -- Set colorscheme to use
-  colorscheme = "default_theme",
+  colorscheme = "catppuccin",
 
   -- Override highlight groups in any theme
-  highlights = {
-    -- duskfox = { -- a table of overrides/changes to the default
-    --   Normal = { bg = "#000000" },
-    -- },
-    default_theme = function(highlights) -- or a function that returns a new table of colors to set
-      local C = require "default_theme.colors"
-
-      highlights.Normal = { fg = C.fg, bg = C.bg }
-      return highlights
-    end,
-  },
-
+  -- highlights = {
+  --   -- duskfox = { -- a table of overrides/changes to the default
+  --   --   Normal = { bg = "#000000" },
+  --   -- },
+  --   default_theme = function(highlights) -- or a function that returns a new table of colors to set
+  --     local C = require "default_theme.colors"
+  --
+  --     highlights.Normal = { fg = C.fg, bg = C.bg }
+  --     return highlights
+  --   end,
+  -- },
+  --
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
     opt = {
@@ -105,7 +105,7 @@ local config = {
       ["nvim-tree"] = false,
       ["nvim-web-devicons"] = true,
       rainbow = true,
-      symbols_outline = false,
+      symbols_outline = true,
       telescope = true,
       vimwiki = false,
       ["which-key"] = true,
@@ -179,10 +179,21 @@ local config = {
 
       ["<A-h>"] = { "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer tab" },
       ["<A-l>"] = { "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer tab" },
+
+      ["<leader>jj"] = { "<cmd>lua require'hop'.hint_char2()<cr>", desc = "Jump to char" },
+      ["<leader>jk"] = { "<cmd>lua require'hop'.hint_lines()<cr>", desc = "Jump to line" },
+
+      ["<C-x>"] = { "<C-w>c", desc = "Close current window" },
+      ["<C-v>"] = { "<C-w>v", desc = "Vertical split current window" },
+      ["<C-h>"] = { "<C-w>h", desc = "Horrizontal split current window" },
     },
     t = {
       -- setting a mapping to false will disable it
       -- ["<esc>"] = false,
+    },
+    v = {
+      ["<leader>jj"] = { "<cmd>lua require'hop'.hint_char2()<cr>", desc = "Jump to char" },
+      ["<leader>jk"] = { "<cmd>lua require'hop'.hint_lines()<cr>", desc = "Jump to line" },
     },
   },
 
@@ -195,6 +206,23 @@ local config = {
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
+      --
+      -- toggleterm is laggy so disable it
+      {
+        "catppuccin/nvim",
+        as = "catppuccin",
+      },
+      ["akinsho/toggleterm.nvim"] = {
+        disable = true,
+      },
+      {
+        "phaazon/hop.nvim",
+        branch = "v2", -- optional but strongly recommended
+        config = function()
+          -- you can configure Hop the way you like here; see :h hop-config
+          require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
+        end,
+      },
       {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
@@ -203,6 +231,10 @@ local config = {
       {
         "ray-x/go.nvim",
         config = function() require("go").setup() end,
+      },
+      {
+        "ray-x/guihua.lua",
+        run = "cd lua/fzy && make",
       },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
@@ -289,6 +321,12 @@ local config = {
           -- third key is the key to bring up next level and its displayed
           -- group name in which-key top level menu
           ["b"] = { name = "Buffer" },
+          ["j"] = { name = "Jump" },
+        },
+      },
+      v = {
+        ["<leader>"] = {
+          ["j"] = { name = "Jump" },
         },
       },
     },
@@ -298,9 +336,16 @@ local config = {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
+    -- Hop configuration
+    require("hop").setup()
+    -- vim.cmd "hi HopNextKey guifg=#ff9900"
+    -- vim.cmd "hi HopNextKey1 guifg=#ff9900"
+    -- vim.cmd "hi HopNextKey2 guifg=#ff9900"
+
     -- Set key binding
     local opts = { noremap = true, silent = true }
     local keymap = vim.api.nvim_set_keymap
+
     keymap("", "<S-h>", "^", opts)
     keymap("", "<S-l>", "$", opts)
 
@@ -314,7 +359,13 @@ local config = {
       pattern = "plugins.lua",
       command = "source <afile> | PackerSync",
     })
-
+    -- highlight yanked text for 200ms using the "Visual" highlight group
+    vim.cmd [[
+      augroup highlight_yank
+      autocmd!
+      au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+      augroup END
+    ]]
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
