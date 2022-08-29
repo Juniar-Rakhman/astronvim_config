@@ -9,14 +9,14 @@ local config = {
   -- Configure AstroNvim updates
   updater = {
     remote = "origin", -- remote to use
-    channel = "stable", -- "stable" or "nightly"
+    channel = "nightly", -- "stable" or "nightly"
     version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
     branch = "main", -- branch name (NIGHTLY ONLY)
     commit = nil, -- commit hash (NIGHTLY ONLY)
     pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
     skip_prompts = false, -- skip prompts about breaking changes
     show_changelog = true, -- show the changelog after performing an update
-    auto_reload = false, -- automatically reload and sync packer after a successful update
+    auto_reload = true, -- automatically reload and sync packer after a successful update
     auto_quit = false, -- automatically quit the current session after a successful update
     -- remotes = { -- easily add new remotes to track
     --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
@@ -28,26 +28,17 @@ local config = {
   -- Set colorscheme to use
   colorscheme = "catppuccin",
 
-  -- Override highlight groups in any theme
-  -- highlights = {
-  --   -- duskfox = { -- a table of overrides/changes to the default
-  --   --   Normal = { bg = "#000000" },
-  --   -- },
-  --   default_theme = function(highlights) -- or a function that returns a new table of colors to set
-  --     local C = require "default_theme.colors"
-  --
-  --     highlights.Normal = { fg = C.fg, bg = C.bg }
-  --     return highlights
-  --   end,
-  -- },
-  --
   -- set vim options here (vim.<first_key>.<second_key> =  value)
   options = {
     opt = {
       relativenumber = true, -- sets vim.opt.relativenumber
     },
+    o = {
+      termguicolors = true,
+    },
     g = {
       mapleader = " ", -- sets vim.g.mapleader
+      catppuccin_flavour = "macchiato",
     },
   },
   -- If you need more control, you can use the function()...end notation
@@ -184,7 +175,8 @@ local config = {
       ["<leader>jk"] = { "<cmd>lua require'hop'.hint_lines()<cr>", desc = "Jump to line" },
 
       ["<C-x>"] = { "<C-w>c", desc = "Close current window" },
-      ["<C-v>"] = { "<C-w>v", desc = "Vertical split current window" },
+      ["<C-t>"] = { "<cmd>only<cr>", desc = "Close other windows" },
+      ["<C-\\>"] = { "<C-w>v", desc = "Vertical split current window" },
       ["<C-h>"] = { "<C-w>h", desc = "Horrizontal split current window" },
     },
     t = {
@@ -206,8 +198,9 @@ local config = {
       -- You can also add new plugins here as well:
       -- Add plugins, the packer syntax without the "use"
       -- { "andweeb/presence.nvim" },
-      --
-      -- toggleterm is laggy so disable it
+      {
+        "mg979/vim-visual-multi",
+      },
       {
         "catppuccin/nvim",
         as = "catppuccin",
@@ -217,11 +210,8 @@ local config = {
       },
       {
         "phaazon/hop.nvim",
-        branch = "v2", -- optional but strongly recommended
-        config = function()
-          -- you can configure Hop the way you like here; see :h hop-config
-          require("hop").setup { keys = "etovxqpdygfblzhckisuran" }
-        end,
+        branch = "v2",
+        config = function() require("hop").setup { keys = "etovxqpdygfblzhckisuran" } end,
       },
       {
         "ray-x/lsp_signature.nvim",
@@ -236,6 +226,14 @@ local config = {
         "ray-x/guihua.lua",
         run = "cd lua/fzy && make",
       },
+      -- {
+      --   "ray-x/navigator.lua",
+      --   requires = {
+      --     { "ray-x/guihua.lua", run = "cd lua/fzy && make" },
+      --     { "neovim/nvim-lspconfig" },
+      --   },
+      --   config = function() require("navigator").setup() end,
+      -- },
       -- We also support a key value style plugin definition similar to NvChad:
       -- ["ray-x/lsp_signature.nvim"] = {
       --   event = "BufRead",
@@ -366,6 +364,10 @@ local config = {
       au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
       augroup END
     ]]
+    -- disable guihua on auto complete
+    vim.cmd "autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }"
+    vim.cmd "autocmd FileType guihua_rust lua require('cmp').setup.buffer { enabled = false }"
+
     -- Set up custom filetypes
     -- vim.filetype.add {
     --   extension = {
