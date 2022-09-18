@@ -7,7 +7,7 @@ return {
     active = {
       {
         { provider = provider.spacer(), hl = hl.mode() },
-        { provider = "git_branch", hl = hl.fg("Conditional", { fg = C.purple_1, style = "bold" }), icon = " " },
+        { provider = "git_branch", hl = hl.fg("Conditional", { fg = C.purple_1, style = "bold" }), icon = "  " },
         { provider = provider.spacer(3), enabled = conditional.git_available },
         { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
         { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
