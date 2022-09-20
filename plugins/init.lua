@@ -19,6 +19,8 @@ return {
     config = function() require "user.plugins.lspsaga" end,
   },
 
+  ["crispgm/nvim-go"] = require "user.plugins.nvim-go",
+
   -- Telescope
   ["nvim-telescope/telescope-symbols.nvim"] = {},
 
