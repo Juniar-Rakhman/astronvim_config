@@ -1,7 +1,10 @@
+local dap = require "dap"
+local dapui = require "dapui"
+local dapwidgets = require "dap.ui.widgets"
+
 return {
   n = {
     ["<leader>"] = {
-      ["c"] = { "<cmd>bdelete<cr>", "Close Buffer" },
       ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
       ["H"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
 
@@ -9,51 +12,57 @@ return {
         name = "Finder",
         ["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
         ["'"] = { "<cmd>Telescope marks<cr>", "Marks" },
-        e = { "<cmd>Telescope file_browser<cr>", "Explorer" },
-        h = { "<cmd>Telescope oldfiles<cr>", "History" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         n = { "<cmd>Telescope notify<cr>", "Notifications" },
-        p = { "<cmd>Telescope project<cr>", "Projects" },
         r = { "<cmd>Telescope registers<cr>", "Registers" },
+        e = { "<cmd>Telescope symbols<cr>", "Emojis" },
       },
 
       d = {
         name = "Debug",
-        R = { function() require("dap").run_to_cursor() end, "Run to Cursor" },
-        C = { function() require("dap").set_breakpoint(vim.fn.input "[Condition] > ") end, "Conditional Breakpoint" },
-        b = { function() require("dap").step_back() end, "Step Back" },
-        c = { function() require("dap").continue() end, "Continue" },
-        d = { function() require("dap").disconnect() end, "Disconnect" },
-        g = { function() require("dap").session() end, "Get Session" },
-        i = { function() require("dap").step_into() end, "Step Into" },
-        o = { function() require("dap").step_over() end, "Step Over" },
-        p = { function() require("dap").pause.toggle() end, "Pause" },
-        q = { function() require("dap").close() end, "Quit" },
-        r = { function() require("dap").repl.toggle() end, "Toggle Repl" },
-        s = { function() require("dap").continue() end, "Start" },
-        t = { function() require("dap").toggle_breakpoint() end, "Toggle Breakpoint" },
-        x = { function() require("dap").terminate() end, "Terminate" },
-        u = { function() require("dap").step_out() end, "Step Out" },
-        e = { function() require("dapui").eval() end, "Evaluate" },
-        U = { function() require("dapui").toggle() end, "Toggle UI" },
-        E = { function() require("dapui").eval(vim.fn.input "[Expression] > ") end, "Evaluate Input" },
-        h = { function() require("dap.ui.widgets").hover() end, "Hover Variables" },
-        S = { function() require("dap.ui.widgets").scopes() end, "Scopes" },
+        R = { function() dap.run_to_cursor() end, "Run to Cursor" },
+        C = { function() dap.set_breakpoint(vim.fn.input "[Condition] > ") end, "Conditional Breakpoint" },
+        b = { function() dap.step_back() end, "Step Back" },
+        c = { function() dap.continue() end, "Continue" },
+        d = { function() dap.disconnect() end, "Disconnect" },
+        g = { function() dap.session() end, "Get Session" },
+        i = { function() dap.step_into() end, "Step Into" },
+        o = { function() dap.step_over() end, "Step Over" },
+        p = { function() dap.pause.toggle() end, "Pause" },
+        q = { function() dap.close() end, "Quit" },
+        r = { function() dap.repl.toggle() end, "Toggle Repl" },
+        s = { function() dap.continue() end, "Start" },
+        t = { function() dap.toggle_breakpoint() end, "Toggle Breakpoint" },
+        x = { function() dap.terminate() end, "Terminate" },
+        u = { function() dap.step_out() end, "Step Out" },
+        e = { function() dapui.eval() end, "Evaluate" },
+        U = { function() dapui.toggle() end, "Toggle UI" },
+        E = { function() dapui.eval(vim.fn.input "[Expression] > ") end, "Evaluate Input" },
+        h = { function() dapwidgets.hover() end, "Hover Variables" },
+        S = { function() dapwidgets.scopes() end, "Scopes" },
+      },
+
+      t = {
+        name = "Tab",
+        b = { "<cmd>tabnew<cr>", "New tab" },
+        c = { "<cmd>tabclose<cr>", "Close tab" },
+        n = { "<cmd>tabnext<cr>", "Next Tab" },
+        p = { "<cmd>tabprevious<cr>", "Previous Tab" },
+        q = { "<cmd>tabclose<cr>", "Close Tab" },
       },
     },
 
     ["]"] = {
-      f = "Next function start",
-      x = "Next class start",
-      F = "Next function end",
-      X = "Next class end",
+      d = "Next diagnostic",
     },
 
     ["["] = {
-      f = "Previous function start",
-      x = "Previous class start",
-      F = "Previous function end",
-      X = "Previous class end",
+      d = "Previous diagnostic",
+    },
+
+    ["g"] = {
+      r = { "<cmd>Lspsaga lsp_finder<cr>", "References" },
+      i = { function() vim.lsp.buf.implementation() end, "Implementation" },
     },
   },
   i = {

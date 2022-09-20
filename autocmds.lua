@@ -11,12 +11,11 @@ vim.api.nvim_create_augroup("packer_conf", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
   desc = "Sync packer after modifying plugins.lua",
   group = "packer_conf",
-  pattern = "plugins/init.lua",
+  pattern = "*/.config/**/*/plugins/init.lua",
   command = "source <afile> | PackerSync",
 })
 
--- highlight yanked text for 200ms using the "Visual" highlight group
-
+-- highlight yanked text using "IncSearch" highlight group
 vim.cmd [[
   augroup highlight_yank
   autocmd!

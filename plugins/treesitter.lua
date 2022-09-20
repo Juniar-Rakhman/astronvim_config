@@ -1,7 +1,6 @@
 return {
   ensure_installed = {
     "bash",
-    "bibtex",
     "c",
     "cmake",
     "comment",
@@ -14,13 +13,9 @@ return {
     "http",
     "javascript",
     "json",
-    "julia",
-    "latex",
     "lua",
     "make",
     "markdown",
-    "python",
-    "r",
     "regex",
     "toml",
     "tsx",

@@ -10,11 +10,17 @@ return {
 
   -- Additional Plugins
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
-  ["editorconfig/editorconfig-vim"] = {},
+  ["ray-x/lsp_signature.nvim"] = {
+    event = "BufRead",
+    config = function() require("lsp_signature").setup() end,
+  },
+
+  ["glepnir/lspsaga.nvim"] = {
+    config = function() require "user.plugins.lspsaga" end,
+  },
 
   -- Telescope
-  ["nvim-telescope/telescope-file-browser.nvim"] = require "user.plugins.telescope-file-browser",
-  ["nvim-telescope/telescope-project.nvim"] = require "user.plugins.telescope-project",
+  ["nvim-telescope/telescope-symbols.nvim"] = {},
 
   -- Debugging
   ["mfussenegger/nvim-dap"] = {

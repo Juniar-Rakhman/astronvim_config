@@ -22,6 +22,8 @@ return {
     ["<leader>sn"] = false,
     ["<leader>sr"] = false,
 
+    ["<leader>gr"] = false,
+
     ["<S-l>"] = false, -- rebind to eol see polish.lua
     ["<S-h>"] = false, -- rebind to bol see polish.lua
 
@@ -33,18 +35,11 @@ return {
     ["\\"] = { "<cmd>split<cr>", desc = "Horizontal split" },
     ["|"] = { "<cmd>vsplit<cr>", desc = "Vertical split" },
 
-    -- TODO: replace with LEAP
-
     ["<leader>q"] = { "<cmd>Bdelete<cr>", desc = "Close buffer" },
     ["<C-t>"] = { "<cmd>only<cr>", desc = "Close other windows" },
 
     ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous buffer" },
     ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next buffer" },
-
-    ["<leader>tb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
-    ["<leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
-    ["<leader>tq"] = { "<cmd>tabclose<cr>", desc = "Close Tab" },
 
     ["<leader>e"] = { "<cmd>Neotree float<cr>", desc = "Explorer" },
     ["<ESC>"] = { "<cmd>nohlsearch<Bar>:echo<cr>", desc = "Clear" },
