@@ -4,13 +4,13 @@ return {
     notify = false,
     -- auto commands
     auto_format = true,
-    auto_lint = true,
+    auto_lint = false,
     -- linters: revive, errcheck, staticcheck, golangci-lint
     linter = "revive",
     -- linter_flags: e.g., {revive = {'-config', '/path/to/config.yml'}}
     linter_flags = {},
     -- lint_prompt_style: qf (quickfix), vt (virtual text)
-    lint_prompt_style = "qf",
+    lint_prompt_style = "vt",
     -- formatter: goimports, gofmt, gofumpt
     formatter = "gofumpt",
     -- maintain cursor position after formatting loaded buffer
@@ -23,7 +23,7 @@ return {
     test_popup = true,
     test_popup_auto_leave = false,
     test_popup_width = 100,
-    test_popup_height = 50,
+    test_popup_height = 0,
     -- test open
     test_open_cmd = "edit",
     -- struct tags

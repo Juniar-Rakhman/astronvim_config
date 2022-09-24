@@ -6,7 +6,6 @@ return {
     ["<leader>h"] = false,
     ["<leader>o"] = false,
     ["<leader>s"] = false,
-    ["<leader>/"] = false,
 
     ["<C-\\>"] = false,
     ["<leader>fh"] = false,
@@ -21,8 +20,6 @@ return {
     ["<leader>sm"] = false,
     ["<leader>sn"] = false,
     ["<leader>sr"] = false,
-
-    ["<leader>gr"] = false,
 
     ["<S-l>"] = false, -- rebind to eol see polish.lua
     ["<S-h>"] = false, -- rebind to bol see polish.lua
@@ -41,7 +38,7 @@ return {
     ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous buffer" },
     ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next buffer" },
 
-    ["<leader>e"] = { "<cmd>Neotree float<cr>", desc = "Explorer" },
+    ["<leader>e"] = { "<cmd>Neotree toggle<cr>", desc = "Explorer" },
     ["<ESC>"] = { "<cmd>nohlsearch<Bar>:echo<cr>", desc = "Clear" },
   },
   t = {

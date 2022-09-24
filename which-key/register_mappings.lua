@@ -42,6 +42,12 @@ return {
         S = { function() dapwidgets.scopes() end, "Scopes" },
       },
 
+      j = {
+        name = "Jump",
+        j = { function() require("hop").hint_char2() end, "Jump 2 char" },
+        l = { function() require("hop").hint_lines() end, "Jump line" },
+      },
+
       t = {
         name = "Tab",
         b = { "<cmd>tabnew<cr>", "New tab" },
@@ -61,8 +67,8 @@ return {
     },
 
     ["g"] = {
-      r = { "<cmd>Lspsaga lsp_finder<cr>", "References" },
-      i = { function() vim.lsp.buf.implementation() end, "Implementation" },
+      r = { "<cmd>Telescope lsp_references<cr>", "References" },
+      i = { "<cmd>Telescope lsp_implementations<cr>", "Implementation" },
     },
   },
   i = {
@@ -80,6 +86,12 @@ return {
       d = {
         name = "Debugger",
         e = { function() require("dapui").eval() end, "Evaluate Line" },
+      },
+
+      j = {
+        name = "Jump",
+        j = { function() require("hop").hint_char2() end, "Jump 2 char" },
+        l = { function() require("hop").hint_lines() end, "Jump line" },
       },
     },
   },

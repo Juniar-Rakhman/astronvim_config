@@ -15,13 +15,20 @@ return {
     config = function() require("lsp_signature").setup() end,
   },
 
-  ["glepnir/lspsaga.nvim"] = {
-    config = function() require "user.plugins.lspsaga" end,
-  },
-
+  -- Golang --
   ["crispgm/nvim-go"] = require "user.plugins.nvim-go",
 
-  -- Telescope
+  -- Jumping around --
+  ["phaazon/hop.nvim"] = {
+    branch = "v2", -- optional but strongly recommended
+    config = function() require("hop").setup { keys = "etovxqpdygfblzhckisuran" } end,
+  },
+
+  -- Multi cursor --
+  ["mg979/vim-visual-multi"] = {},
+  ["tribela/vim-transparent"] = {},
+
+  -- Additional Telescope plugins
   ["nvim-telescope/telescope-symbols.nvim"] = {},
 
   -- Debugging
