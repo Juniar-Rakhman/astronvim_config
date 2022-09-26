@@ -7,6 +7,7 @@ return {
   ["mrjones2014/smart-splits.nvim"] = { disable = true },
   ["akinsho/bufferline.nvim"] = { disable = true },
   ["akinsho/toggleterm.nvim"] = { disable = true },
+  ["goolord/alpha-nvim"] = { disable = true },
 
   -- Additional Plugins
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
@@ -16,7 +17,9 @@ return {
   },
 
   -- Golang --
-  ["crispgm/nvim-go"] = require "user.plugins.nvim-go",
+  ["crispgm/nvim-go"] = {
+    config = function() require("user.plugins.nvim-go").setup() end,
+  },
 
   -- Jumping around --
   ["phaazon/hop.nvim"] = {
@@ -26,7 +29,6 @@ return {
 
   -- Multi cursor --
   ["mg979/vim-visual-multi"] = {},
-  ["tribela/vim-transparent"] = {},
 
   -- Additional Telescope plugins
   ["nvim-telescope/telescope-symbols.nvim"] = {},

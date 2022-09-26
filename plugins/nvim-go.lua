@@ -1,4 +1,6 @@
-return {
+local M = {}
+
+function M.setup()
   require("go").setup {
     -- notify: use nvim-notify
     notify = false,
@@ -33,5 +35,7 @@ return {
     tags_flags = { "-skip-unexported" },
     -- quick type
     quick_type_flags = { "--just-types" },
-  },
-}
+  }
+end
+
+return M
