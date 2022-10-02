@@ -1,8 +1,11 @@
 local hl = require("core.status").hl
 local provider = require("core.status").provider
 local conditional = require("core.status").conditional
+local C = require "default_theme.colors"
 -- stylua: ignore
 return {
+  disable = { filetypes = { "^NvimTree$", "^neo%-tree$", "^dashboard$", "^Outline$", "^aerial$" } },
+  theme = hl.group("StatusLine", { fg = C.fg, bg = C.bg_1 }),
   components = {
     active = {
       {

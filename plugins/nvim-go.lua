@@ -8,7 +8,7 @@ function M.setup()
     auto_format = true,
     auto_lint = false,
     -- linters: revive, errcheck, staticcheck, golangci-lint
-    linter = "revive",
+    linter = "revive", -- this is annoying to enable
     -- linter_flags: e.g., {revive = {'-config', '/path/to/config.yml'}}
     linter_flags = {},
     -- lint_prompt_style: qf (quickfix), vt (virtual text)
@@ -16,7 +16,7 @@ function M.setup()
     -- formatter: goimports, gofmt, gofumpt
     formatter = "gofumpt",
     -- maintain cursor position after formatting loaded buffer
-    maintain_cursor_pos = false,
+    maintain_cursor_pos = true,
     -- test flags: -count=1 will disable cache
     test_flags = { "-v" },
     test_timeout = "30s",
