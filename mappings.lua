@@ -3,6 +3,7 @@ return {
   n = {
     -- disable default bindings
     ["<leader>c"] = false,
+    ["<leader>d"] = false,
     ["<leader>h"] = false,
     ["<leader>o"] = false,
     ["<leader>s"] = false,
@@ -12,14 +13,6 @@ return {
     ["<leader>fm"] = false,
     ["<leader>fn"] = false,
     ["<leader>fo"] = false,
-
-    ["<leader>sb"] = false,
-    ["<leader>sc"] = false,
-    ["<leader>sh"] = false,
-    ["<leader>sk"] = false,
-    ["<leader>sm"] = false,
-    ["<leader>sn"] = false,
-    ["<leader>sr"] = false,
 
     ["<S-l>"] = false, -- rebind to eol see polish.lua
     ["<S-h>"] = false, -- rebind to bol see polish.lua
