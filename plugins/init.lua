@@ -10,13 +10,20 @@ return {
     config = function() require("lsp_signature").setup() end,
   },
   ["lvimuser/lsp-inlayhints.nvim"] = {
-    config = function() require("user.plugins.lsp-inlayhints").setup() end
+    config = function() require("user.plugins.lsp-inlayhints").setup() end,
   },
 
   -- Golang --
   ["crispgm/nvim-go"] = {
+    module = "nvim-go",
+    event = "BufRead *.go",
     config = function() require("user.plugins.nvim-go").setup() end,
   },
+
+  -- Java --
+  ["mfussenegger/nvim-jdtls"] = { module = "jdtls" },
+
+  ["mason-lspconfig"] = { ensure_installed = { "jdtls" } }, -- install jdtls
 
   -- Jumping around --
   ["phaazon/hop.nvim"] = {
@@ -49,5 +56,4 @@ return {
     },
     config = function() require("user.plugins.dap").setup() end,
   },
-
 }

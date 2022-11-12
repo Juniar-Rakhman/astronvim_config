@@ -7,13 +7,13 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function() vim.keymap.set("n", "q", "<cmd>close!<cr>") end,
 })
 
-vim.api.nvim_create_augroup("packer_conf", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  desc = "Sync packer after modifying plugins.lua",
-  group = "packer_conf",
-  pattern = "*/.config/**/*/plugins/init.lua",
-  command = "source <afile> | PackerSync",
-})
+-- vim.api.nvim_create_augroup("packer_conf", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   desc = "Sync packer after modifying plugins.lua",
+--   group = "packer_conf",
+--   pattern = "*/.config/**/*/plugins/init.lua",
+--   command = "source <afile> | PackerSync",
+-- })
 
 -- highlight yanked text using "IncSearch" highlight group
 vim.cmd [[
@@ -28,12 +28,18 @@ vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
   group = "LspAttach_inlayhints",
   callback = function(args)
-    if not (args.data and args.data.client_id) then
-      return
-    end
+    if not (args.data and args.data.client_id) then return end
 
     local bufnr = args.buf
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     require("lsp-inlayhints").on_attach(client, bufnr)
+  end,
+})
+
+vim.api.nvim_create_autocmd("Filetype", {
+  pattern = "java", -- autocmd to start jdtls
+  callback = function()
+    local config = astronvim.lsp.server_settings "jdtls"
+    if config.root_dir and config.root_dir ~= "" then require("jdtls").start_or_attach(config) end
   end,
 })

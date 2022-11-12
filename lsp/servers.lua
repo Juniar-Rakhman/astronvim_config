@@ -6,4 +6,5 @@ return {
   "tsserver",
   "gopls",
   "yamlls",
+  "jdtls",
 }

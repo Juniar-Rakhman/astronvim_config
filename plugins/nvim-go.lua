@@ -1,20 +1,47 @@
 local M = {}
 
 function M.setup()
+  -- Setup keymaps
+  local status_ok, which_key = pcall(require, "which-key")
+  if not status_ok then return end
+
+  local opts = {
+    mode = "n", -- NORMAL mode prefix = "<leader>", buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  }
+
+  local mappings = {
+    C = {
+      name = "Code",
+      i = { "<cmd>GoInstallBinaries<Cr>", "Install Go Binaries" },
+      a = { "<cmd>GoAddTest<Cr>", "Add Test" },
+      L = { "<cmd>GoLint<Cr>", "Go Lint" },
+      t = { "<cmd>lua require('dap-go').debug_test()<cr>", "Debug Test" },
+    },
+  }
+
+  which_key.register(mappings, opts)
+
+  -- quick type setup
+  require("go").config.update_tool("quicktype", function(tool) tool.pkg_mgr = "yarn" end)
+
+  -- Main setup
   require("go").setup {
     -- notify: use nvim-notify
     notify = false,
     -- auto commands
-    auto_format = true,
-    auto_lint = true,
+    auto_format = false,
+    auto_lint = false,
     -- linters: revive, errcheck, staticcheck, golangci-lint
     linter = "revive", -- this is annoying to enable
     -- linter_flags: e.g., {revive = {'-config', '/path/to/config.yml'}}
     linter_flags = {},
     -- lint_prompt_style: qf (quickfix), vt (virtual text)
-    lint_prompt_style = "qf",
+    lint_prompt_style = "vt",
     -- formatter: goimports, gofmt, gofumpt
-    formatter = "goimports",
+    formatter = "gofumpt",
     -- maintain cursor position after formatting loaded buffer
     maintain_cursor_pos = true,
     -- test flags: -count=1 will disable cache
