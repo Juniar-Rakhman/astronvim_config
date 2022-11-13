@@ -5,7 +5,7 @@ return {
       ["o"] = "open",
     },
   },
-  enable_diagnostics = true,
+  enable_diagnostics = false,
   event_handlers = {
     { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
     {

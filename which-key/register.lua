@@ -8,6 +8,10 @@ return {
       ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
       ["H"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
 
+      c = {
+        name = "Code", -- will be populated with language specific functionalities
+      },
+
       f = {
         name = "Finder",
         ["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
@@ -23,7 +27,7 @@ return {
         R = { function() dap.run_to_cursor() end, "Run to Cursor" },
         C = { function() dap.set_breakpoint(vim.fn.input "[Condition] > ") end, "Conditional Breakpoint" },
         b = { function() dap.step_back() end, "Step Back" },
-        c = { function() dap.continue() end, "Continue" },
+        c = { function() dap.continue() end, "Start/Continue" },
         d = { function() dap.disconnect() end, "Disconnect" },
         g = { function() dap.session() end, "Get Session" },
         i = { function() dap.step_into() end, "Step Into" },
@@ -31,10 +35,10 @@ return {
         p = { function() dap.pause.toggle() end, "Pause" },
         q = { function() dap.close() end, "Quit" },
         r = { function() dap.repl.toggle() end, "Toggle Repl" },
-        s = { function() dap.continue() end, "Start" },
         t = { function() dap.toggle_breakpoint() end, "Toggle Breakpoint" },
         x = { function() dap.terminate() end, "Terminate" },
         u = { function() dap.step_out() end, "Step Out" },
+
         e = { function() dapui.eval() end, "Evaluate" },
         U = { function() dapui.toggle() end, "Toggle UI" },
         E = { function() dapui.eval(vim.fn.input "[Expression] > ") end, "Evaluate Input" },
@@ -48,7 +52,7 @@ return {
         l = { function() require("hop").hint_lines() end, "Jump line" },
       },
 
-      t = {
+      T = {
         name = "Tab",
         b = { "<cmd>tabnew<cr>", "New tab" },
         c = { "<cmd>tabclose<cr>", "Close tab" },

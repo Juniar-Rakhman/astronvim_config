@@ -1,12 +1,16 @@
 local M = {}
 
 function M.setup()
+  -- quick type setup
+  require("go").config.update_tool("quicktype", function(tool) tool.pkg_mgr = "yarn" end)
+
+  -- Main setup
   require("go").setup {
     -- notify: use nvim-notify
     notify = false,
     -- auto commands
-    auto_format = true,
-    auto_lint = false,
+    auto_format = false, -- lsp already formats
+    auto_lint = true,
     -- linters: revive, errcheck, staticcheck, golangci-lint
     linter = "revive", -- this is annoying to enable
     -- linter_flags: e.g., {revive = {'-config', '/path/to/config.yml'}}
@@ -25,7 +29,7 @@ function M.setup()
     test_popup = true,
     test_popup_auto_leave = false,
     test_popup_width = 100,
-    test_popup_height = 0,
+    test_popup_height = 100,
     -- test open
     test_open_cmd = "edit",
     -- struct tags
