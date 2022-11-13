@@ -9,6 +9,15 @@ os.execute("mkdir " .. workspace_dir)
 -- get the mason install path
 local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
 
+-- Determine OS
+if vim.fn.has "mac" == 1 then
+  CONFIG = "mac"
+elseif vim.fn.has "unix" == 1 then
+  CONFIG = "linux"
+else
+  print "Unsupported system"
+end
+
 -- return the server config
 return {
   cmd = {
@@ -28,7 +37,7 @@ return {
     "-jar",
     vim.fn.glob(install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
     "-configuration",
-    install_path .. "/config_linux",
+    install_path .. "/config_" .. CONFIG,
     "-data",
     workspace_dir,
   },

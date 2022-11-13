@@ -12,7 +12,9 @@ return {
     autopairs_enabled = true, -- enable autopairs at start
     diagnostics_enabled = true, -- enable diagnostics at start
     status_diagnostics_enabled = true, -- enable diagnostics in statusline
-    everforest_background = "hard",
-    everforest_enable_italic = 1,
+    -- everforest options
+    -- everforest_background = "hard",
+    -- everforest_enable_italic = 1,
+    -- everforest_better_performance = 1,
   },
 }

@@ -1,10 +1,8 @@
-local util = require "lspconfig/util"
-
 return {
-  root_dir = util.root_pattern("go.mod", ".git"),
   settings = {
     gopls = {
       analyses = {
+        shadow = true,
         nilness = true,
         unusedresult = true,
         unusedparams = true,

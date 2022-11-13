@@ -13,17 +13,18 @@ return {
     config = function() require("user.plugins.lsp-inlayhints").setup() end,
   },
 
+  ["williamboman/mason-lspconfig.nvim"] = { ensure_installed = { "gopls", "jdtls" } }, -- install jdtls
+
   -- Golang --
   ["crispgm/nvim-go"] = {
-    module = "nvim-go",
+    module = "go",
     event = "BufRead *.go",
     config = function() require("user.plugins.nvim-go").setup() end,
   },
 
   -- Java --
+  -- LSP setup is skipped. See config in autocmds.lua
   ["mfussenegger/nvim-jdtls"] = { module = "jdtls" },
-
-  ["mason-lspconfig"] = { ensure_installed = { "jdtls" } }, -- install jdtls
 
   -- Jumping around --
   ["phaazon/hop.nvim"] = {
