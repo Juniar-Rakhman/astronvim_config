@@ -15,6 +15,12 @@ return {
 
   ["williamboman/mason-lspconfig.nvim"] = { ensure_installed = { "gopls", "jdtls" } }, -- install jdtls
 
+  -- Typescript
+  ["jose-elias-alvarez/typescript.nvim"] = {
+    after = "mason-lspconfig.nvim",
+    config = function() require "user.plugins.typescript" end,
+  },
+
   -- Golang --
   ["crispgm/nvim-go"] = {
     module = "go",
@@ -57,4 +63,7 @@ return {
     },
     config = function() require("user.plugins.dap").setup() end,
   },
+
+  -- Editor Config
+  ["gpanders/editorconfig.nvim"] = { after = "mason-lspconfig" },
 }

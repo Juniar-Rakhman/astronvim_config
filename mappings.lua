@@ -17,7 +17,7 @@ return {
     ["<S-l>"] = false, -- rebind to eol see polish.lua
     ["<S-h>"] = false, -- rebind to bol see polish.lua
 
-    -- center seach result
+    -- center search result
     ["<n>"] = { "nzz", desc = "Next result" },
     ["<N>"] = { "Nzz", desc = "Previous result" },
 

@@ -1,3 +1,10 @@
+local status, jdtls = pcall(require, "jdtls")
+
+if not status then
+  vim.notify "Please install jdtls"
+  return
+end
+
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
@@ -17,6 +24,19 @@ elseif vim.fn.has "unix" == 1 then
 else
   print "Unsupported system"
 end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
+
+local extendedClientCapabilities = jdtls.extendedClientCapabilities
+extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 -- return the server config
 return {
@@ -42,4 +62,74 @@ return {
     workspace_dir,
   },
   root_dir = root_dir,
+  capabilities = capabilities,
+  settings = {
+    java = {
+      eclipse = {
+        downloadSources = true,
+      },
+      configuration = {
+        updateBuildConfiguration = "interactive",
+        runtimes = {
+          {
+            name = "JavaSE-17",
+            path = "/home/jrakhman/.sdkman/candidates/java/17.0.4-oracle",
+          },
+        },
+      },
+      maven = {
+        downloadSources = true,
+      },
+      implementationsCodeLens = {
+        enabled = true,
+      },
+      referencesCodeLens = {
+        enabled = true,
+      },
+      references = {
+        includeDecompiledSources = true,
+      },
+      inlayHints = {
+        parameterNames = {
+          enabled = "all", -- literals, all, none
+        },
+      },
+      format = {
+        enabled = true,
+      },
+    },
+    signatureHelp = { enabled = true },
+    completion = {
+      favoriteStaticMembers = {
+        "org.hamcrest.MatcherAssert.assertThat",
+        "org.hamcrest.Matchers.*",
+        "org.hamcrest.CoreMatchers.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "java.util.Objects.requireNonNull",
+        "java.util.Objects.requireNonNullElse",
+        "org.mockito.Mockito.*",
+      },
+    },
+    contentProvider = { preferred = "fernflower" },
+    extendedClientCapabilities = extendedClientCapabilities,
+    sources = {
+      organizeImports = {
+        starThreshold = 9999,
+        staticStarThreshold = 9999,
+      },
+    },
+    codeGeneration = {
+      toString = {
+        template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+      },
+      useBlocks = true,
+    },
+  },
+
+  flags = {
+    allow_incremental_sync = true,
+  },
+  init_options = {
+    bundles = {},
+  },
 }

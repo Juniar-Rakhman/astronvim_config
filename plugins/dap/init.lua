@@ -32,20 +32,12 @@ local function configure_extensions()
     layouts = {
       {
         elements = {
+          "console",
           "scopes",
-          "breakpoints",
           "stacks",
           "watches",
         },
-        size = 40,
-        position = "right",
-      },
-      {
-        elements = {
-          "repl",
-          "console",
-        },
-        size = 10,
+        size = 20,
         position = "bottom",
       },
     },
@@ -62,9 +54,7 @@ local function configure_extensions()
   dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 end
 
-local function configure_debuggers()
-  require("user.plugins.dap.go").setup()
-end
+local function configure_debuggers() require("user.plugins.dap.go").setup() end
 
 function M.setup()
   configure()
