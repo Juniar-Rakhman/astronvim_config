@@ -15,6 +15,8 @@ os.execute("mkdir " .. workspace_dir)
 
 -- get the mason install path
 local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
+local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
+local java_debug_adapter_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
 
 -- Determine OS
 if vim.fn.has "mac" == 1 then
@@ -24,6 +26,14 @@ elseif vim.fn.has "unix" == 1 then
 else
   print "Unsupported system"
 end
+
+local bundles = {}
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
+vim.list_extend(
+  bundles,
+  vim.split(vim.fn.glob(java_debug_adapter_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
+)
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -84,18 +94,21 @@ return {
         enabled = true,
       },
       referencesCodeLens = {
-        enabled = true,
+        enabled = false,
       },
       references = {
-        includeDecompiledSources = true,
+        includeDecompiledSources = false,
       },
       inlayHints = {
         parameterNames = {
-          enabled = "all", -- literals, all, none
+          enabled = "literals", -- literals, all, none
         },
       },
       format = {
         enabled = true,
+        -- settings = {
+        --   url = "/home/jrakhman/.config/nvim/lua/user/lsp/server-settings/java_format.xml",
+        -- },
       },
     },
     signatureHelp = { enabled = true },
@@ -125,11 +138,10 @@ return {
       useBlocks = true,
     },
   },
-
   flags = {
     allow_incremental_sync = true,
   },
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
 }

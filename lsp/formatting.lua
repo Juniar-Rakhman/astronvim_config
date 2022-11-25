@@ -1,3 +1,3 @@
 return {
-  disabled = { "sumneko_lua" },
+    disabled = { "sumneko_lua" },
 }

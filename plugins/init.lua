@@ -4,11 +4,20 @@ return {
 
   -- Additional Plugins
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
-  ["sainnhe/everforest"] = {},
+
+  -- ["sainnhe/everforest"] = {},
+
+  ["EdenEast/nightfox.nvim"] = {
+    module = "nightfox",
+    event = "ColorScheme",
+    config = function() require "user.plugins.nightfox" end,
+  },
+
   ["ray-x/lsp_signature.nvim"] = {
     event = "BufRead",
     config = function() require("lsp_signature").setup() end,
   },
+
   ["lvimuser/lsp-inlayhints.nvim"] = {
     config = function() require("user.plugins.lsp-inlayhints").setup() end,
   },
@@ -65,5 +74,5 @@ return {
   },
 
   -- Editor Config
-  ["gpanders/editorconfig.nvim"] = { after = "mason-lspconfig" },
+  ["gpanders/editorconfig.nvim"] = {},
 }

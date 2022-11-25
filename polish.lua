@@ -1,5 +1,7 @@
 -- The function below will be executed last
 return function()
+  -- disable comment continuation
+  vim.cmd [[set formatoptions-=cro]]
   -- Set global key binding
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_set_keymap
