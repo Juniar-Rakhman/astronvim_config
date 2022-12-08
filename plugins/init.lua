@@ -2,8 +2,10 @@ return {
   -- Disabled plugins
   ["max397574/better-escape.nvim"] = { disable = true },
 
-  -- Additional Plugins
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
+
+  -- Better syntax highlighting
+  ["David-Kunz/markid"] = {},
 
   -- ["sainnhe/everforest"] = {},
 
