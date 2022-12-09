@@ -55,25 +55,25 @@ return {
   -- Additional Telescope plugins
   ["nvim-telescope/telescope-symbols.nvim"] = {},
 
-  -- Debugging
-  ["mfussenegger/nvim-dap"] = {
-    opt = true,
-    event = "BufReadPre",
-    module = { "dap" },
-    wants = {
-      "nvim-dap-virtual-text",
-      "DAPInstall.nvim",
-      "nvim-dap-ui",
-      "which-key.nvim",
-    },
-    requires = {
-      "Pocco81/DAPInstall.nvim",
-      "theHamsta/nvim-dap-virtual-text",
-      "rcarriga/nvim-dap-ui",
-      { "leoluz/nvim-dap-go", module = "dap-go" }, -- Debug Golang
-    },
-    config = function() require("user.plugins.dap").setup() end,
-  },
+  -- -- Debugging
+  -- ["mfussenegger/nvim-dap"] = {
+  --   opt = true,
+  --   event = "BufReadPre",
+  --   module = { "dap" },
+  --   wants = {
+  --     "nvim-dap-virtual-text",
+  --     "DAPInstall.nvim",
+  --     "nvim-dap-ui",
+  --     "which-key.nvim",
+  --   },
+  --   requires = {
+  --     "Pocco81/DAPInstall.nvim",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "rcarriga/nvim-dap-ui",
+  --     { "leoluz/nvim-dap-go", module = "dap-go" }, -- Debug Golang
+  --   },
+  --   config = function() require("user.plugins.dap").setup() end,
+  -- },
 
   -- Editor Config
   ["gpanders/editorconfig.nvim"] = {},

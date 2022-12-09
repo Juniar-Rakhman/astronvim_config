@@ -19,6 +19,20 @@ local vopts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+function JdtAttach()
+  local dap = require "dap"
+  dap.configurations.java = {
+    {
+      type = "java",
+      request = "attach",
+      name = "Attach to the process",
+      hostName = "localhost",
+      port = "5005",
+    },
+  }
+  dap.continue()
+end
+
 function M.attach()
   -- jdtls setup is skipped in lsp config. Do it here instead.
   local config = astronvim.lsp.server_settings "jdtls"
@@ -51,6 +65,7 @@ function M.attach()
         t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
         T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
         u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+        a = { ":lua JdtAttach()<CR>", "Attach Debugger" },
       },
     }
 
