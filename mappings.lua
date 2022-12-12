@@ -1,6 +1,8 @@
 -- This is where you should override builtin mappings
 return {
   n = {
+    ["f"] = { function() require("hop").hint_char2() end, desc = "Jump 2 char" },
+
     -- disable default bindings
     ["<leader>c"] = false,
     ["<leader>d"] = false,
@@ -38,5 +40,7 @@ return {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
-  v = {},
+  v = {
+    ["f"] = { function() require("hop").hint_char2() end, desc = "Jump 2 char" },
+  },
 }

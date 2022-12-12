@@ -34,6 +34,10 @@ function JdtAttach()
 end
 
 function M.attach()
+  vim.opt_local.shiftwidth = 4
+  vim.opt_local.tabstop = 4
+  -- vim.opt_local.cmdheight = 1 -- more space in the neovim command line for displaying messages
+
   -- jdtls setup is skipped in lsp config. Do it here instead.
   local config = astronvim.lsp.server_settings "jdtls"
 
@@ -41,14 +45,14 @@ function M.attach()
     config["on_attach"] = function(client, bufnr)
       vim.lsp.codelens.refresh()
       require("jdtls.dap").setup_dap_main_class_configs()
-      require("jdtls").setup_dap { hotcodereplace = "auto" }
+      -- require("jdtls").setup_dap { hotcodereplace = "auto" }
       astronvim.lsp.on_attach(client, bufnr)
     end
 
     require("jdtls").start_or_attach(config)
 
-    vim.cmd [[command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)]]
-    vim.cmd [[command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()]]
+    -- vim.cmd [[command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)]]
+    -- vim.cmd [[command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()]]
 
     ---------------------------------------------------------------------------------------------------------------------
     -- Keymap for Java --

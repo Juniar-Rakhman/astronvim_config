@@ -1,6 +1,7 @@
 return {
   -- Disabled plugins
   ["max397574/better-escape.nvim"] = { disable = true },
+  ["akinsho/bufferline.nvim"] = { disable = true },
 
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
 

@@ -5,6 +5,7 @@ return {
     astronvim.status.component.git_branch(),
     astronvim.status.component.file_info(
       astronvim.is_available "bufferline.nvim" and { filename = { modify = ":." }, file_modified = false } or nil
+      -- astronvim.is_available "bufferline.nvim" and { filetype = {}, filename = false, file_modified = false } or nil
     ),
     astronvim.status.component.git_diff(),
     astronvim.status.component.diagnostics(),
