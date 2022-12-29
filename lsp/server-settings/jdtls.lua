@@ -18,6 +18,9 @@ local install_path = require("mason-registry").get_package("jdtls"):get_install_
 local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
 local java_debug_adapter_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
 
+vim.opt_local.shiftwidth = 2
+vim.opt_local.tabstop = 2
+
 -- Determine OS
 if vim.fn.has "mac" == 1 then
   CONFIG = "mac"
@@ -106,9 +109,9 @@ return {
       },
       format = {
         enabled = true,
-        -- settings = {
-        --   url = "/home/jrakhman/.config/nvim/lua/user/lsp/server-settings/java_format.xml",
-        -- },
+        settings = {
+          url = "/home/jrakhman/.config/nvim/lua/user/lsp/server-settings/java_format.xml",
+        },
       },
     },
     signatureHelp = { enabled = true },

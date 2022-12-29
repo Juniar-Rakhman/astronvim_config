@@ -1,6 +1,10 @@
 return {
   n = {
     ["<leader>"] = {
+      D = nil,
+      d = {
+        name = "Debugger",
+      },
       ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
       ["H"] = { "<cmd>set hlsearch!<cr>", "Toggle Highlight" },
 
