@@ -1,6 +1,20 @@
 return {
-  -- Disabled plugins
+  ------------------- Disabled plugins -----------------
   ["max397574/better-escape.nvim"] = { disable = true },
+  ["Darazaki/indent-o-matic"] = { disable = true },
+  ["akinsho/bufferline.nvim"] = { disable = true },
+  ["rebelot/heirline.nvim"] = { disable = true },
+  ------------------------------------------------------
+
+  -- Statusline
+  ["feline-nvim/feline.nvim"] = {
+    after = "nvim-web-devicons",
+    config = function() require("user.plugins.feline").setup() end,
+  },
+
+  ["SmiteshP/nvim-navic"] = {
+    requires = "neovim/nvim-lspconfig",
+  },
 
   ["chaoren/vim-wordmotion"] = { fn = { "<Plug>WordMotion_w" } },
 

@@ -1,3 +1,4 @@
+--TODO: disabled until v3
 return {
   {
     hl = { fg = "fg", bg = "bg" },

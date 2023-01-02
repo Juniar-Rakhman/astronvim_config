@@ -11,6 +11,7 @@ return {
     "html",
     "http",
     "javascript",
+    "java",
     "json",
     "lua",
     "make",

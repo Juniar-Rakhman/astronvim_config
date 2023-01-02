@@ -11,4 +11,5 @@ return function()
 
   -- Run auto commands
   require "user.autocmds"
+
 end

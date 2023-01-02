@@ -1,9 +1,9 @@
 return {
   n = {
     ["gT"] = false, -- unused
-    ["gr"] = false, -- replaced with telescope lsp_references
+    ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to [r]eferences" }, -- replaced with telescope lsp_references
     ["gl"] = false, -- redundant
-    ["gd"] = { "<cmd>Telescope lsp_definitions<cr>", desc = "Show the definition of current symbol" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<cr>", desc = "Go to [d]efinition" },
   },
   v = {
     ["<leader>la"] = { function() vim.lsp.buf.range_code_action() end, desc = "Range LSP code action" },

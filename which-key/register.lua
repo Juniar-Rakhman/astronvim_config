@@ -1,7 +1,7 @@
 return {
   n = {
     ["<leader>"] = {
-      D = nil,
+      D = {},
       d = {
         name = "Debugger",
       },
@@ -47,8 +47,7 @@ return {
     },
 
     ["g"] = {
-      r = { "<cmd>Telescope lsp_references<cr>", "References" },
-      i = { "<cmd>Telescope lsp_implementations<cr>", "Implementation" },
+      i = { "<cmd>Telescope lsp_implementations<cr>", "Go to [i]mplementations" },
     },
   },
   i = {
@@ -61,13 +60,5 @@ return {
       d = { "<c-r>=strftime('%Y/%m/%d %H:%M:%S -')<cr>", "Y/m/d H:M:S -" },
     },
   },
-  v = {
-    ["<leader>"] = {
-      j = {
-        name = "Jump",
-        j = { function() require("hop").hint_char2() end, "Jump 2 char" },
-        l = { function() require("hop").hint_lines() end, "Jump line" },
-      },
-    },
-  },
+  v = {},
 }
