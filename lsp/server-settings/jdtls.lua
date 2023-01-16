@@ -5,9 +5,6 @@ if not status then
   return
 end
 
--- vim.opt_local.shiftwidth = 2
--- vim.opt_local.tabstop = 2
-
 local home = os.getenv "HOME"
 if vim.fn.has "mac" == 1 then
   WORKSPACE_PATH = home .. "/jdtls_workspace/"
@@ -111,7 +108,8 @@ return {
       format = {
         enabled = true,
         settings = {
-          url = "/home/jrakhman/.config/nvim/lua/user/lsp/server-settings/java_format.xml",
+          url = "/home/jrakhman/.config/nvim/lua/user/formatter/eclipse-java-custom-style.xml",
+          profile = "GoogleStyle",
         },
       },
     },

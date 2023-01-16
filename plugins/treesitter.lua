@@ -24,5 +24,5 @@ return {
     "yaml",
   },
   indent = { enable = true, disable = { "python" } },
-  markid = { enable = true },
+  -- markid = { enable = true },
 }

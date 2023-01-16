@@ -13,6 +13,12 @@ local config = {
       {
         { provider = provider.spacer(), hl = hl.mode() },
         { provider = provider.spacer(2), enabled = conditional.has_filetype },
+        { provider = "git_branch", hl = hl.fg("Conditional", { fg = C.purple_1, style = "bold" }), icon = "  " },
+        { provider = provider.spacer(2), enabled = conditional.git_available },
+        { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
+        { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
+        { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
+        { provider = provider.spacer(2), enabled = conditional.git_changed },
         {
           provider = {
             name = "file_info",
@@ -27,12 +33,6 @@ local config = {
         { provider = "diagnostic_hints", hl = hl.fg("DiagnosticHint", { fg = C.yellow_1 }), icon = "  " },
       },
       {
-        { provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
-        { provider = "git_diff_changed", hl = hl.fg("GitSignsChange", { fg = C.orange_1 }), icon = " 柳" },
-        { provider = "git_diff_removed", hl = hl.fg("GitSignsDelete", { fg = C.red_1 }), icon = "  " },
-        { provider = provider.spacer(2), enabled = conditional.git_changed },
-        { provider = "git_branch", hl = hl.fg("Conditional", { fg = C.purple_1, style = "bold" }), icon = "  " },
-        { provider = provider.spacer(3), enabled = conditional.git_available },
         { provider = provider.lsp_progress, enabled = conditional.bar_width() },
         {
           provider = provider.lsp_client_names(true),
@@ -59,6 +59,7 @@ local config = {
   },
 }
 
+---@diagnostic disable-next-line: redundant-parameter
 function M.setup() require("feline").setup(config) end
 
 return M

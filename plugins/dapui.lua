@@ -5,7 +5,6 @@ return {
     {
       elements = {
         { id = "scopes", size = 0.33 },
-        { id = "breakpoints", size = 0.17 },
         { id = "stacks", size = 0.25 },
         { id = "watches", size = 0.25 },
       },
@@ -30,10 +29,9 @@ return {
     },
   },
   controls = {
-    -- Requires Neovim nightly (or 0.8 when released)
     enabled = true,
     -- Display controls in this element
-    element = "repl",
+    element = "console",
     icons = {
       pause = "⏸️",
       play = "▶️",

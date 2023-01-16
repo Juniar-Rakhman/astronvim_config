@@ -45,10 +45,6 @@ return {
 
     ["<leader>q"] = { "<cmd>Bdelete<cr>", desc = "Close buffer" },
     ["<C-t>"] = { "<cmd>only<cr>", desc = "Close other windows" },
-
-    ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous buffer" },
-    ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next buffer" },
-
     ["<leader>e"] = { "<cmd>Neotree toggle<cr>", desc = "Explorer" },
     ["<ESC>"] = { "<cmd>nohlsearch<Bar>:echo<cr>", desc = "Clear" },
 

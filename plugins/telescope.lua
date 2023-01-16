@@ -12,7 +12,6 @@ return {
         results_height = 0.6,
         preview_height = 0.7,
       },
-      -- width = 0.87,
       height = 0.87,
       preview_cutoff = 25,
     },
