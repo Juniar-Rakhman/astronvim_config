@@ -115,7 +115,7 @@
     <setting
       id="org.eclipse.jdt.core.formatter.insert_space_after_opening_paren_in_constructor_declaration"
       value="do not insert" />
-    <setting id="org.eclipse.jdt.core.formatter.comment.format_line_comments" value="true" />
+    <setting id="org.eclipse.jdt.core.formatter.comment.format_line_comments" value="false" />
     <setting
       id="org.eclipse.jdt.core.formatter.insert_space_after_closing_angle_bracket_in_type_arguments"
       value="do not insert" />
@@ -505,7 +505,7 @@
     <setting id="org.eclipse.jdt.core.formatter.alignment_for_superinterfaces_in_enum_declaration"
       value="16" />
     <setting id="org.eclipse.jdt.core.formatter.indent_statements_compare_to_block" value="true" />
-    <setting id="org.eclipse.jdt.core.formatter.join_lines_in_comments" value="true" />
+    <setting id="org.eclipse.jdt.core.formatter.join_lines_in_comments" value="false" />
     <setting id="org.eclipse.jdt.core.formatter.insert_space_before_question_in_conditional"
       value="insert" />
     <setting

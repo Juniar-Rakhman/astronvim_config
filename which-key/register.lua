@@ -20,6 +20,7 @@ return {
         n = { "<cmd>Telescope notify<cr>", "Notifications" },
         r = { "<cmd>Telescope registers<cr>", "Registers" },
         e = { "<cmd>Telescope symbols<cr>", "Emojis" },
+        s = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Dynamic Workspace Symbols" },
       },
 
       j = {
