@@ -86,6 +86,10 @@ return {
             name = "JavaSE-17",
             path = "/home/jrakhman/.sdkman/candidates/java/17.0.4-oracle",
           },
+          {
+            name = "JavaSE-11",
+            path = "/home/jrakhman/.sdkman/candidates/java/11.0.2-open",
+          },
         },
       },
       maven = {
