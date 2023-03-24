@@ -1,7 +1,7 @@
 return {
   n = {
     ["<leader>"] = {
-      D = {},
+      D = { nil },
       d = {
         name = "Debugger",
       },
