@@ -10,6 +10,5 @@ return function()
   keymap("", "<S-l>", "$", opts)
 
   -- Run auto commands
-  require "user.autocmds"
-
+  -- require "user.autocmds"
 end
