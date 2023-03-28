@@ -1,4 +1,19 @@
----@diagnostic disable: missing-parameter
+---@diagnostic disable: missing-parameter, unused-local
+
+function AttachDebugLocalhost()
+  local dap = require "dap"
+  dap.configurations.java = {
+    {
+      type = "java",
+      request = "attach",
+      name = "Attach to the process",
+      hostName = "localhost",
+      port = "5005",
+    },
+  }
+  dap.continue()
+end
+
 return {
   {
     "mfussenegger/nvim-jdtls",
@@ -8,10 +23,10 @@ return {
       local home = os.getenv "HOME"
       if vim.fn.has "mac" == 1 then
         WORKSPACE_PATH = home .. "/jdtls_workspace/"
-        CONFIG = "mac"
+        OS = "mac"
       elseif vim.fn.has "unix" == 1 then
         WORKSPACE_PATH = home .. "/jdtls_workspace/"
-        CONFIG = "linux"
+        OS = "linux"
       else
         vim.notify "Unsupported system"
         return
@@ -72,7 +87,7 @@ return {
           "-jar",
           vim.fn.glob(install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
           "-configuration",
-          install_path .. "/config_" .. CONFIG,
+          install_path .. "/config_" .. OS,
           "-data",
           workspace_dir,
         },
@@ -147,7 +162,6 @@ return {
             useBlocks = true,
           },
         },
-
         flags = {
           allow_incremental_sync = true,
         },
@@ -164,10 +178,57 @@ return {
     config = function(_, opts)
       -- setup autocmd on java filetype
       vim.api.nvim_create_autocmd("Filetype", {
-        pattern = "java", -- autocmd to start jdtls
+        pattern = "java",
         callback = function()
           if opts.root_dir and opts.root_dir ~= "" then
             require("jdtls").start_or_attach(opts)
+            vim.cmd [[command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)]]
+            vim.cmd [[command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()]]
+
+            ---------------------------------------------------------------------------------------------------------------------
+            -- Keymap for Java --
+            ---------------------------------------------------------------------------------------------------------------------
+
+            local status_ok, which_key = pcall(require, "which-key")
+            if not status_ok then return end
+
+            local mappings = {
+              c = {
+                name = "Code",
+                o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
+                v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
+                c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
+                t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+                T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+                u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+                a = { "<Cmd>lua AttachDebugLocalhost()<CR>", "Attach Debugger" },
+              },
+            }
+
+            local vmappings = {
+              c = {
+                name = "Code",
+                v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
+                c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
+                m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
+              },
+            }
+            which_key.register(mappings, {
+              mode = "n", -- NORMAL mode
+              prefix = "<leader>",
+              buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+              silent = true, -- use `silent` when creating keymaps
+              noremap = true, -- use `noremap` when creating keymaps
+              nowait = true, -- use `nowait` when creating keymaps
+            })
+            which_key.register(vmappings, {
+              mode = "v", -- VISUAL mode
+              prefix = "<leader>",
+              buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+              silent = true, -- use `silent` when creating keymaps
+              noremap = true, -- use `noremap` when creating keymaps
+              nowait = true, -- use `nowait` when creating keymaps
+            })
           else
             require("astronvim.utils").notify(
               "jdtls: root_dir not found. Please specify a root marker",
@@ -180,11 +241,14 @@ return {
       -- This ensures that the LSP is fully attached.
       -- See https://github.com/mfussenegger/nvim-jdtls#nvim-dap-configuration
       vim.api.nvim_create_autocmd("LspAttach", {
-        pattern = "*.java",
+        pattern = "java",
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           -- ensure that only the jdtls client is activated
-          if client.name == "jdtls" then require("jdtls.dap").setup_dap_main_class_configs() end
+          if client.name == "jdtls" then
+            require("jdtls.dap").setup_dap_main_class_configs()
+            require("jdtls").setup_dap { hotcodereplace = "auto" }
+          end
         end,
       })
     end,
