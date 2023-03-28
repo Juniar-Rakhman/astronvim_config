@@ -2,7 +2,7 @@ return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
     local status = require "astronvim.utils.status"
-    opts.statusline[3] = status.component.file_info { filetype = {}, filename = false }
+    opts.statusline[3] = status.component.file_info { filetype = false, filename = { modify = ":." } }
     opts.tabline[2] = status.heirline.make_buflist(status.component.tabline_file_info { close_button = false })
     opts.winbar[1][1] = status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } }
     opts.winbar[2] = {
