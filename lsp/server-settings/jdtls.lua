@@ -5,27 +5,28 @@ if not status then
   return
 end
 
+local home = os.getenv "HOME"
+if vim.fn.has "mac" == 1 then
+  WORKSPACE_PATH = home .. "/jdtls_workspace/"
+  CONFIG = "mac"
+elseif vim.fn.has "unix" == 1 then
+  WORKSPACE_PATH = home .. "/jdtls_workspace/"
+  CONFIG = "linux"
+else
+  print "Unsupported system"
+end
+
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
 -- calculate workspace dir
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
-os.execute("mkdir " .. workspace_dir)
+local workspace_dir = WORKSPACE_PATH .. project_name
 
 -- get the mason install path
 local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
 local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
 local java_debug_adapter_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
-
--- Determine OS
-if vim.fn.has "mac" == 1 then
-  CONFIG = "mac"
-elseif vim.fn.has "unix" == 1 then
-  CONFIG = "linux"
-else
-  print "Unsupported system"
-end
 
 local bundles = {}
 
@@ -85,6 +86,10 @@ return {
             name = "JavaSE-17",
             path = "/home/jrakhman/.sdkman/candidates/java/17.0.4-oracle",
           },
+          {
+            name = "JavaSE-11",
+            path = "/home/jrakhman/.sdkman/candidates/java/11.0.2-open",
+          },
         },
       },
       maven = {
@@ -106,9 +111,10 @@ return {
       },
       format = {
         enabled = true,
-        -- settings = {
-        --   url = "/home/jrakhman/.config/nvim/lua/user/lsp/server-settings/java_format.xml",
-        -- },
+        settings = {
+          url = "/home/jrakhman/.config/nvim/lua/user/formatter/eclipse-java-custom-style.xml",
+          profile = "GoogleStyle",
+        },
       },
     },
     signatureHelp = { enabled = true },

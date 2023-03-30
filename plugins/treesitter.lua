@@ -11,6 +11,7 @@ return {
     "html",
     "http",
     "javascript",
+    "java",
     "json",
     "lua",
     "make",
@@ -23,5 +24,5 @@ return {
     "yaml",
   },
   indent = { enable = true, disable = { "python" } },
-  markid = { enable = true },
+  -- markid = { enable = true },
 }
