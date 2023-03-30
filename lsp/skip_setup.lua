@@ -1,4 +1,1 @@
-return {
-  "jdtls", -- setup in autocmds.lua
-  "tsserver",
-}
+return { "jdtls" }

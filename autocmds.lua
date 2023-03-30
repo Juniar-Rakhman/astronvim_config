@@ -1,32 +1,16 @@
-vim.api.nvim_create_augroup("dapui", { clear = true })
-
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Make q close dap floating windows",
-  group = "dapui",
-  pattern = "dap-float",
-  callback = function() vim.keymap.set("n", "q", "<cmd>close!<cr>") end,
+vim.api.nvim_create_autocmd("VimLeave", {
+  desc = "Stop running auto compiler",
+  group = vim.api.nvim_create_augroup("autocomp", { clear = true }),
+  pattern = "*",
+  callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
 })
 
--- Attach lsp-inlayhints to current buffer
-vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "LspAttach_inlayhints",
-  callback = function(args)
-    if not (args.data and args.data.client_id) then return end
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("lsp-inlayhints").on_attach(client, bufnr)
+-- text like documents enable wrap and spell
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "markdown", "text", "plaintex" },
+  group = vim.api.nvim_create_augroup("auto_spell", { clear = true }),
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
   end,
-})
-
--- autocmd to start jdtls
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = "java",
-  callback = function() require("user.autocmds.java").attach() end,
-})
-
--- automcd for gopls
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "go",
-  callback = function() require("user.autocmds.go").attach() end,
 })

@@ -9,7 +9,6 @@ return function()
   keymap("", "<S-h>", "^", opts)
   keymap("", "<S-l>", "$", opts)
 
-  -- Run auto commands
+  -- run auto commands
   require "user.autocmds"
-
 end
