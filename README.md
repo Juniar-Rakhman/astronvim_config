@@ -18,5 +18,6 @@ git clone https://github.com/Juniar-Rakhman/astronvim_config ~/.config/nvim/lua/
 
 ## Branches
 
-The branches reflect the astronvim version it is currenly configured for (i.e. 3.2.0 for astronvim v3.2.0)
+The branches reflect the astronvim version it is currenly configured for (i.e. 3.2.0 for astronvim v3.2.0).
+
 The main branch is the stable config for the latest stable version of astronvim.
