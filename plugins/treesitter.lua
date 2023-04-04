@@ -6,23 +6,24 @@ return {
       "andymass/vim-matchup",
       init = function() vim.g.matchup_matchparen_deferred = 1 end,
     },
-    {
-      "HiPhish/nvim-ts-rainbow2",
-      config = function()
-        vim.api.nvim_create_autocmd({ "BufWritePost", "FocusGained" }, {
-          callback = function()
-            vim.cmd.TSDisable "rainbow"
-            vim.cmd.TSEnable "rainbow"
-          end,
-        })
-      end,
-    },
+    -- TODO: https://github.com/neovim/neovim/pull/17099
+    -- {
+    --   "HiPhish/nvim-ts-rainbow2",
+    --   config = function()
+    --     vim.api.nvim_create_autocmd({ "BufWritePost", "FocusGained" }, {
+    --       callback = function()
+    --         vim.cmd.TSDisable "rainbow"
+    --         vim.cmd.TSEnable "rainbow"
+    --       end,
+    --     })
+    --   end,
+    -- },
   },
   opts = {
     auto_install = vim.fn.executable "tree-sitter" == 1,
     highlight = { disable = { "help" } },
     matchup = { enable = true },
-    rainbow = { enable = true },
+    -- rainbow = { enable = false },
     textobjects = {
       lsp_interop = {
         enable = true,

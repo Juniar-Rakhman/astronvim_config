@@ -1,1 +1,1 @@
-return { "jdtls" }
+return { "jdtls", "tsserver" }
