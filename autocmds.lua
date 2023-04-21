@@ -19,3 +19,15 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   desc = "Disable comment continuation",
   command = "set formatoptions-=cro",
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+
+    -- TODO: 
+    --
+    -- If both volar and tsserver is attached
+    -- then disable tsserver
+    --
+
+  end,
+})

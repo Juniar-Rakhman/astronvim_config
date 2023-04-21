@@ -1,6 +1,6 @@
 return {
   disabled = {
     "lua_ls",
-    "tsserver",
+    -- "jdtls",
   },
 }
