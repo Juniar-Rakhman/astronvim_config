@@ -39,8 +39,12 @@ return {
         },
       },
       pickers = {
+        lsp_references = {
+          path_display = { "smart" },
+        },
         find_files = {
           hidden = true,
+          path_display = { "smart" },
         },
         buffers = {
           path_display = { "smart" },
@@ -53,7 +57,7 @@ return {
     })
   end,
   config = function(...)
-    require "plugins.configs.telescope" (...)
+    require "plugins.configs.telescope"(...)
     local telescope = require "telescope"
     telescope.load_extension "projects"
   end,
