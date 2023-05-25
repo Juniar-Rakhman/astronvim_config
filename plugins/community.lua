@@ -3,5 +3,4 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.colorscheme.nightfox" },
   { import = "astrocommunity.motion.leap-nvim" },
-  -- { import = "astrocommunity.pack.typescript" },
 }
