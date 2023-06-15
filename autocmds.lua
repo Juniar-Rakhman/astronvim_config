@@ -20,14 +20,20 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
   command = "set formatoptions-=cro",
 })
 
+-- sort buffer by number
+vim.api.nvim_create_autocmd("User", {
+  pattern = "AstroBufsUpdated",
+  group = vim.api.nvim_create_augroup("auto_sort_tabline", { clear = true }),
+  callback = function() require("astronvim.utils.buffer").sort("bufnr", true) end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
 
-    -- TODO: 
+    -- TODO:
     --
     -- If both volar and tsserver is attached
     -- then disable tsserver
     --
-
   end,
 })
