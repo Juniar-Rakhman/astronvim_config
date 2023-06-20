@@ -41,7 +41,7 @@ return {
       local workspace_dir = WORKSPACE_PATH .. project_name
 
       -- get the mason install path
-      local install_path = require("mason-registry").get_package("jdtls"):get_install_path()
+      local jdtls_install_path = require("mason-registry").get_package("jdtls"):get_install_path()
       local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
       local java_debug_adapter_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
 
@@ -78,7 +78,7 @@ return {
           "-Declipse.product=org.eclipse.jdt.ls.core.product",
           "-Dlog.protocol=true",
           "-Dlog.level=ALL",
-          "-javaagent:" .. install_path .. "/lombok.jar",
+          "-javaagent:" .. jdtls_install_path .. "/lombok.jar",
           "-Xms1g",
           "--add-modules=ALL-SYSTEM",
           "--add-opens",
@@ -86,9 +86,9 @@ return {
           "--add-opens",
           "java.base/java.lang=ALL-UNNAMED",
           "-jar",
-          vim.fn.glob(install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
+          vim.fn.glob(jdtls_install_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
           "-configuration",
-          install_path .. "/config_" .. OS,
+          jdtls_install_path .. "/config_" .. OS,
           "-data",
           workspace_dir,
         },

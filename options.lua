@@ -7,7 +7,7 @@ return {
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
     wrap = false, -- sets vim.opt.wrap
-    winblend = 20, -- sets floating window transparency
+    winblend = 5, -- sets floating window transparency
     expandtab = true,
     tabstop = 2,
     shiftwidth = 2,
