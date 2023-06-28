@@ -1,9 +1,9 @@
-vim.api.nvim_create_autocmd("VimLeave", {
-  desc = "Stop running auto compiler",
-  group = vim.api.nvim_create_augroup("autocomp", { clear = true }),
-  pattern = "*",
-  callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
-})
+-- vim.api.nvim_create_autocmd("VimLeave", {
+--   desc = "Stop running auto compiler",
+--   group = vim.api.nvim_create_augroup("autocomp", { clear = true }),
+--   pattern = "*",
+--   callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
+-- })
 
 -- text like documents enable wrap and spell
 vim.api.nvim_create_autocmd("FileType", {
@@ -29,7 +29,6 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-
     -- TODO:
     --
     -- If both volar and tsserver is attached

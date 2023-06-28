@@ -29,6 +29,10 @@ return {
     ["<leader>o"] = { "<cmd>only<cr>", desc = "Only display current window" },
     ["<leader>q"] = { "<C-w>q", desc = "Quit current window" },
   },
+  v = {
+    ["<"] = { "<gv", desc = "Unindent line" },
+    [">"] = { ">gv", desc = "Indent line" },
+  },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,

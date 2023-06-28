@@ -1,3 +1,4 @@
+-- All LSP related plugins
 return {
   {
     "ray-x/lsp_signature.nvim",
