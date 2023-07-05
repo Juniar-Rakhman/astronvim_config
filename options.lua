@@ -11,6 +11,7 @@ return {
     expandtab = true,
     tabstop = 2,
     shiftwidth = 2,
+    autochdir = true,
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
