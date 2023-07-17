@@ -1,1 +1,1 @@
-return "nightfox"
+return "everforest"

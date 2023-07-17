@@ -19,7 +19,7 @@ return {
         -- lint_prompt_style: qf (quickfix), vt (virtual text)
         lint_prompt_style = "vt",
         -- formatter: goimports, gofmt, gofumpt
-        formatter = "gofumpt",
+        -- formatter = "gofumpt",
         -- maintain cursor position after formatting loaded buffer
         maintain_cursor_pos = true,
         -- test flags: -count=1 will disable cache

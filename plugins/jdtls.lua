@@ -1,5 +1,3 @@
----@diagnostic disable: missing-parameter, unused-local
-
 function AttachDebugLocalhost()
   local dap = require "dap"
   dap.configurations.java = {
@@ -18,6 +16,7 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
+    ---@diagnostic disable-next-line: unused-local
     opts = function(_, opts)
       -- determine config for current OS
       local home = os.getenv "HOME"
@@ -189,6 +188,7 @@ return {
             vim.cmd [[command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_set_runtime JdtSetRuntime lua require('jdtls').set_runtime(<f-args>)]]
             vim.cmd [[command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()]]
 
+            --TODO: move this to keymap folder
             ---------------------------------------------------------------------------------------------------------------------
             -- Keymap for Java --
             ---------------------------------------------------------------------------------------------------------------------
@@ -245,8 +245,9 @@ return {
       -- This ensures that the LSP is fully attached.
       -- See https://github.com/mfussenegger/nvim-jdtls#nvim-dap-configuration
       vim.api.nvim_create_autocmd("LspAttach", {
-        pattern = "java",
+        pattern = "*.java",
         callback = function(args)
+          print "ensuring only jdtls is activated"
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           -- ensure that only the jdtls client is activated
           if client.name == "jdtls" then

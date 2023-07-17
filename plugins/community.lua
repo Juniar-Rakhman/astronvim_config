@@ -1,6 +1,5 @@
 return {
-  -- Add the community repository of plugin specifications
+  -- Add the community repository
   "AstroNvim/astrocommunity",
-  { import = "astrocommunity.colorscheme.nightfox-nvim" },
   { import = "astrocommunity.motion.flit-nvim" },
 }

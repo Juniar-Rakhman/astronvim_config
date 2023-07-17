@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-hop.nvim",
-    "ahmedkhalf/project.nvim", -- defined in  ./editor.lua
+    "ahmedkhalf/project.nvim",
   },
   opts = function(_, opts)
     local telescope = require "telescope"
@@ -40,7 +40,7 @@ return {
       },
       pickers = {
         lsp_references = {
-          path_display = { "smart" },
+          path_display = { "tail" },
         },
         find_files = {
           hidden = true,

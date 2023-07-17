@@ -15,7 +15,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufWinEnter", {
+-- https://github.com/AstroNvim/AstroNvim/issues/1593
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
   desc = "Disable comment continuation",
   command = "set formatoptions-=cro",
 })
