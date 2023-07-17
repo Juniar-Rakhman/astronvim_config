@@ -28,13 +28,3 @@ vim.api.nvim_create_autocmd("User", {
   group = vim.api.nvim_create_augroup("auto_sort_tabline", { clear = true }),
   callback = function() require("astronvim.utils.buffer").sort("bufnr", true) end,
 })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    -- TODO:
-    --
-    -- If both volar and tsserver is attached
-    -- then disable tsserver
-    --
-  end,
-})
