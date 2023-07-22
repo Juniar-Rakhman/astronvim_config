@@ -10,7 +10,7 @@ return {
         -- notify: use nvim-notify
         notify = false,
         -- auto commands
-        auto_format = false, -- lsp already formats
+        auto_format = false, -- lsp already formats and lint
         auto_lint = false,
         -- linters: revive, errcheck, staticcheck, golangci-lint
         linter = "revive", -- this is annoying to enable

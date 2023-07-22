@@ -1,1 +1,1 @@
-return "everforest"
+return "catppuccin-macchiato"

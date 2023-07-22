@@ -3,7 +3,9 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
+    opts = {
+      hint_enable = false,
+    },
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
@@ -11,7 +13,7 @@ return {
       inlay_hints = {
         parameter_hints = {
           show = true,
-          prefix = " ◀ ",
+          prefix = " ▷ ",
           separator = ", ",
           remove_colon_start = false,
           remove_colon_end = true,
@@ -19,7 +21,7 @@ return {
         type_hints = {
           -- type and other hints
           show = true,
-          prefix = " ▶️ ",
+          prefix = " ◁ ",
           separator = ", ",
           remove_colon_start = false,
           remove_colon_end = false,
@@ -32,8 +34,6 @@ return {
         max_len_align = false,
         -- padding from the left if max_len_align is true
         max_len_align_padding = 1,
-        -- highlight group
-        highlight = "LspInlayHint",
       },
       enabled_at_startup = true,
       debug_mode = false,

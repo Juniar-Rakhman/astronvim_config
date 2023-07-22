@@ -16,6 +16,9 @@ return {
   {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
+    init = function()
+      astronvim.lsp.skip_setup = require("astronvim.utils").list_insert_unique(astronvim.lsp.skip_setup, "jdtls")
+    end,
     ---@diagnostic disable-next-line: unused-local
     opts = function(_, opts)
       -- determine config for current OS
@@ -100,14 +103,15 @@ return {
             configuration = {
               updateBuildConfiguration = "interactive",
               runtimes = {
+                -- loop folder in sdkman candidates java folder and automatically add it to runtime table
                 {
                   name = "JavaSE-17",
-                  path = "/home/jrakhman/.sdkman/candidates/java/17.0.4-oracle",
+                  path = home .. "/.sdkman/candidates/java/17.0.8-tem",
                 },
-                {
-                  name = "JavaSE-11",
-                  path = "/home/jrakhman/.sdkman/candidates/java/11.0.2-open",
-                },
+                -- {
+                --   name = "JavaSE-11",
+                --   path = home .. "/.sdkman/candidates/java/11.0.2-open",
+                -- },
               },
             },
             maven = {
@@ -130,7 +134,7 @@ return {
             format = {
               enabled = true,
               settings = {
-                url = "/home/jrakhman/.config/nvim/lua/user/formatter/eclipse-java-custom-style.xml",
+                url = home .. "/.config/nvim/lua/user/formatter_styles/eclipse-java-custom-style.xml",
                 profile = "GoogleStyle",
               },
             },
@@ -247,7 +251,6 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         pattern = "*.java",
         callback = function(args)
-          print "ensuring only jdtls is activated"
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           -- ensure that only the jdtls client is activated
           if client.name == "jdtls" then
