@@ -5,7 +5,7 @@
 --   callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
 -- })
 
--- fot text like documents enable wrap and spell
+-- for text like documents enable wrap and spell
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown", "text", "plaintex" },
   group = vim.api.nvim_create_augroup("auto_spell", { clear = true }),
@@ -19,12 +19,14 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   desc = "Disable comment continuation",
+  group = vim.api.nvim_create_augroup("disable_comment_continuation", { clear = true }),
   command = "set formatoptions-=cro",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   pattern = "*",
   desc = "Enable Codeium automatically",
+  group = vim.api.nvim_create_augroup("auto_codeium", { clear = true }),
   callback = function() vim.api.nvim_command "Codeium Enable" end,
 })
 

@@ -134,7 +134,7 @@ return {
             format = {
               enabled = true,
               settings = {
-                url = home .. "/.config/nvim/lua/user/formatter_styles/eclipse-java-custom-style.xml",
+                url = "/Users/jrakhman/.config/nvim/lua/user/formatter_styles/eclipse-java-custom-style.xml",
                 profile = "GoogleStyle",
               },
             },
@@ -221,6 +221,7 @@ return {
                 m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
               },
             }
+
             which_key.register(mappings, {
               mode = "n", -- NORMAL mode
               prefix = "<leader>",
@@ -229,6 +230,7 @@ return {
               noremap = true, -- use `noremap` when creating keymaps
               nowait = true, -- use `nowait` when creating keymaps
             })
+
             which_key.register(vmappings, {
               mode = "v", -- VISUAL mode
               prefix = "<leader>",
