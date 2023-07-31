@@ -1,6 +1,6 @@
 # AstroNvim User Configuration
 
-My personal config for AstroVim
+My personal config for AstroNvim
 
 ## Installation
 
