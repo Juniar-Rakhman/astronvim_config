@@ -1,30 +1,30 @@
 -- Mapping data with "desc" stored directly by vim.keymap.set().
---
--- Please use this mappings table to set keyboard mapping since this is the
--- lower level configuration and more robust one. (which-key will
--- automatically pick-up stored data by this setting.)
 return {
   -- first key is the mode
   n = {
-    -- second key is the lefthand side of the map
-    -- mappings seen under group name "Buffer"
-    ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader>bD"] = {
-      function()
-        require("astronvim.utils.status").heirline.buffer_picker(
-          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
-        )
-      end,
-      desc = "Pick to close",
-    },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>b"] = { "<cmd>Neotree buffers<cr>", desc = "Buffer list" },
 
-    ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous Buffer" },
-    ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
+    ["<leader>b\\"] = { false },
+    ["<leader>b|"] = { false },
+    ["<leader>bb"] = { false },
+    ["<leader>bC"] = { false },
+    ["<leader>bc"] = { false },
+    ["<leader>bD"] = { false },
+    ["<leader>bd"] = { false },
+    ["<leader>bl"] = { false },
+    ["<leader>bp"] = { false },
+    ["<leader>br"] = { false },
+    ["<leader>bs"] = { false },
+    ["<leader>bse"] = { false },
+    ["<leader>bsr"] = { false },
+    ["<leader>bsp"] = { false },
+    ["<leader>bsi"] = { false },
+    ["<leader>bsm"] = { false },
+
+    -- ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous Buffer" },
+    -- ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
     ["<leader>c"] = { false }, -- will be used for code related functionalities
     ["<leader>o"] = { "<cmd>only<cr>", desc = "Only display current window" },
     ["<leader>q"] = { "<C-w>q", desc = "Quit current window" },
