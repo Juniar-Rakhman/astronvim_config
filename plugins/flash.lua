@@ -1,9 +1,9 @@
--- extending astrocommunity.motion.flash-nvim
+-- extend astrocommunity.motion.flash-nvim
 return {
   {
     "folke/flash.nvim",
     opts = {
-      lakel = {
+      label = {
         rainbow = {
           enabled = true,
           shade = 5,
