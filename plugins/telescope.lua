@@ -1,14 +1,26 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = {
-    "nvim-telescope/telescope-hop.nvim",
-    "ahmedkhalf/project.nvim",
-  },
   opts = function(_, opts)
-    local telescope = require "telescope"
     local actions = require "telescope.actions"
-    local hop = telescope.extensions.hop
     local get_icon = require("astronvim.utils").get_icon
+
+    local function flash(prompt_bufnr)
+      require("flash").jump {
+        pattern = "^",
+        label = { after = { 0, 0 } },
+        search = {
+          mode = "search",
+          exclude = {
+            function(win) return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults" end,
+          },
+        },
+        action = function(match)
+          local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+          picker:set_selection(match.pos[1] - 1)
+        end,
+      }
+    end
+
     return require("astronvim.utils").extend_tbl(opts, {
       defaults = {
         layout_strategy = "vertical",
@@ -27,15 +39,8 @@ return {
           preview_cutoff = 25,
         },
         mappings = {
-          i = {
-            ["<C-h>"] = hop.hop,
-            ["<C-space>"] = function(prompt_bufnr)
-              hop._hop_loop(
-                prompt_bufnr,
-                { callback = actions.toggle_selection, loop_callback = actions.send_selected_to_qflist }
-              )
-            end,
-          },
+          i = { ["<C-s>"] = flash },
+          n = { s = flash },
         },
       },
       pickers = {
@@ -56,9 +61,5 @@ return {
       },
     })
   end,
-  config = function(...)
-    require "plugins.configs.telescope"(...)
-    local telescope = require "telescope"
-    telescope.load_extension "projects"
-  end,
+  config = function(...) require "plugins.configs.telescope"(...) end,
 }
