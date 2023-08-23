@@ -1,7 +1,7 @@
 return {
   {
     "ghillb/cybu.nvim",
-    event = "BufRead",
+    lazy = false,
     cmd = "Cybu",
     config = function()
       require("cybu").setup {
