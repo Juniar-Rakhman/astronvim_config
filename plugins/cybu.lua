@@ -3,6 +3,7 @@ return {
     "ghillb/cybu.nvim",
     lazy = false,
     cmd = "Cybu",
+    event = "BufRead",
     config = function()
       require("cybu").setup {
         position = {
