@@ -1,4 +1,4 @@
--- Mapping data with "desc" stored directly by vim.keymap.set().
+-- Mapping data with "desc" stored directly by vim.keymap.set(). 
 return {
   -- first key is the mode
   n = {
