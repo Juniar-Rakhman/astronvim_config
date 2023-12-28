@@ -51,6 +51,7 @@ return {
 
       -- add java test & debugger into the bundles
       vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n"))
+
       vim.list_extend(
         bundles,
         vim.split(
@@ -106,12 +107,12 @@ return {
                 -- loop folder in sdkman candidates java folder and automatically add it to runtime table
                 {
                   name = "JavaSE-17",
-                  path = home .. "/.sdkman/candidates/java/17.0.8-tem",
+                  path = home .. "/.sdkman/candidates/java/17.0.9-tem",
                 },
-                -- {
-                --   name = "JavaSE-11",
-                --   path = home .. "/.sdkman/candidates/java/11.0.2-open",
-                -- },
+                {
+                  name = "JavaSE-21",
+                  path = home .. "/.sdkman/candidates/java/21.0.1-tem",
+                },
               },
             },
             maven = {
@@ -172,6 +173,7 @@ return {
         init_options = {
           bundles = bundles,
         },
+        handlers = {},
         filetypes = { "java" },
         on_attach = function(client, bufnr)
           require("jdtls").setup_dap()
