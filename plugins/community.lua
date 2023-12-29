@@ -7,4 +7,5 @@ return {
   { import = "astrocommunity.pack.docker" },
   -- disable this when working with vue
   -- { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.java" },
 }
