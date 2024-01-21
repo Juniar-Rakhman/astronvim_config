@@ -1,3 +1,5 @@
+-- see autocmds.lua
+
 ---------------------------------------------------------------------------------------------------------------------
 -- Keymap for Java --
 ---------------------------------------------------------------------------------------------------------------------
@@ -15,6 +17,8 @@ local mappings = {
     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
     a = { "<Cmd>lua AttachDebugger('localhost', 5005)<CR>", "Attach Debugger - localhost" },
+    G = { "<Cmd>lua require('jdtls.tests').generate()<CR>", "Generate Test" },
+    g = { "<Cmd>lua require('jdtls.tests').goto_subjects()<CR>", "Go To Subjects" },
   },
 }
 

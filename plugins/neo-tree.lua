@@ -1,7 +1,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = function(_, opts)
-    opts.window.width = 40
+    opts.window.width = 50
     opts.source_selector = {
       winbar = true, -- toggle to show selector on winbar
       statusline = false,

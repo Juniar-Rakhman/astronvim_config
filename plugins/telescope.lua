@@ -23,6 +23,15 @@ return {
 
     return require("astronvim.utils").extend_tbl(opts, {
       defaults = {
+        file_ignore_patterns = {
+          "^node_modules/",
+          "^.git/",
+          "^target/",
+          "^build/",
+          "^dist/",
+          "^vendor/",
+          "^__pycache__/",
+        },
         layout_strategy = "vertical",
         prompt_prefix = string.format("%s ", get_icon "Search"),
         selection_caret = string.format("%s ", get_icon "Selected"),

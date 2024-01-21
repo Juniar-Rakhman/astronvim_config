@@ -8,4 +8,5 @@ return {
   -- disable this when working with vue
   -- { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 }

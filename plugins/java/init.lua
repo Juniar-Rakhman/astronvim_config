@@ -1,3 +1,5 @@
+-- extends  astrocommunity.pack.java
+
 function AttachDebugger(host, port)
   local dap = require "dap"
   dap.configurations.java = {
@@ -38,7 +40,7 @@ return {
             enabled = true,
           },
           referencesCodeLens = {
-            enabled = true,
+            enabled = false,
           },
           references = {
             includeDecompiledSources = false,
