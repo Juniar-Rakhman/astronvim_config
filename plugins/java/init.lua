@@ -47,7 +47,7 @@ return {
           },
           inlayHints = {
             parameterNames = {
-              enabled = "all", -- literals, all, none
+              enabled = "literals", -- literals, all, none
             },
           },
           format = {

@@ -28,16 +28,16 @@ return {
       },
     },
   },
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      registries = {
-        -- java test does not work in current version. updated to 40.1
-        "github:nvim-java/mason-registry",
-        "github:mason-org/mason-registry",
-      },
-    },
-  },
+  -- {
+  --   "williamboman/mason.nvim",
+  --   opts = {
+  --     registries = {
+  --       -- java test does not work in current version. updated to 40.1
+  --       "github:nvim-java/mason-registry",
+  --       "github:mason-org/mason-registry",
+  --     },
+  --   },
+  -- },
   {
     "jay-babu/mason-nvim-dap.nvim",
     -- overrides `require("mason-nvim-dap").setup(...)`
