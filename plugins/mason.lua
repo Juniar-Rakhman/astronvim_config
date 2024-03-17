@@ -7,7 +7,7 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        -- "tsserver", -- replaced with volar
+        "tsserver", -- replaced with volar
         "dockerls",
         "yamlls",
         "gopls",
@@ -32,7 +32,8 @@ return {
     "williamboman/mason.nvim",
     opts = {
       registries = {
-        -- java test does not work in current version. updated to 40.1
+        -- java test does not work in current version.
+        -- updated to 40.1. with custom registry
         "github:nvim-java/mason-registry",
         "github:mason-org/mason-registry",
       },

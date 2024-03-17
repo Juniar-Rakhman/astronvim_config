@@ -30,6 +30,7 @@ return {
         test_flags = { "-count-1" },
         test_timeout = "30s",
         test_env = {},
+
         -- show test result with popup window
         test_popup = true,
         test_popup_auto_leave = false,

@@ -25,7 +25,9 @@ return {
 
     -- ["<A-h>"] = { "<cmd>bprevious<cr>", desc = "Previous Buffer" },
     -- ["<A-l>"] = { "<cmd>bnext<cr>", desc = "Next Buffer" },
+
     ["<leader>c"] = { false }, -- will be used for code related functionalities
+
     ["<leader>o"] = { "<cmd>only<cr>", desc = "Only display current window" },
     ["<leader>q"] = { "<C-w>q", desc = "Quit current window" },
   },

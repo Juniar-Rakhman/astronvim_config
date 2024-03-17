@@ -1,4 +1,4 @@
--- extend astrocommunity.motion.flash-nvim
+-- extends astrocommunity.motion.flash-nvim
 return {
   {
     "folke/flash.nvim",
