@@ -4,7 +4,6 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    ---@diagnostic disable-next-line: missing-fields
     config = {
       gopls = {
         settings = {
@@ -43,6 +42,19 @@ return {
           },
         },
       },
+    },
+    formatting = {
+      format_on_save = {
+        enabled = true,
+      },
+      -- disable formatting capabilities for specific language servers
+      disabled = {
+        "lua_ls",
+        "volar",    -- use prettier
+        "eslint_d", -- use prettier
+      },
+      -- default format timeout
+      timeout_ms = 1000,
     },
     mappings = {
       i = {
