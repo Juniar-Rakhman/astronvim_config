@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -34,6 +35,14 @@ return {
         },
       },
       lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
+      volar = {
+        filetypes = { "typescript", "javascript", "vue", "json" },
+        init_options = {
+          typescript = {
+            tsdk = os.getenv "HOME" .. "/.nvm/versions/node/v17.9.1/lib/node_modules/typescript/lib/",
+          },
+        },
+      },
     },
     mappings = {
       i = {
