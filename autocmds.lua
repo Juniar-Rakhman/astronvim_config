@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd("User", {
   callback = function() require("astronvim.utils.buffer").sort("bufnr", true) end,
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  pattern = "*.java",
-  group = vim.api.nvim_create_augroup("code_keymap_java", { clear = true }),
-  callback = function(args) require "user.plugins.java.keymaps" end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   pattern = "*.java",
+--   group = vim.api.nvim_create_augroup("code_keymap_java", { clear = true }),
+--   callback = function(args) require "user.plugins.java.keymaps" end,
+-- })
