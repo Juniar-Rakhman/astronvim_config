@@ -34,14 +34,14 @@ return {
         },
       },
       lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
-      volar = {
+      --[[ volar = {
         filetypes = { "typescript", "javascript", "vue", "json" },
         init_options = {
           typescript = {
             tsdk = os.getenv "HOME" .. "/.nvm/versions/node/v17.9.1/lib/node_modules/typescript/lib/",
           },
         },
-      },
+      }, ]]
     },
     formatting = {
       format_on_save = {
@@ -50,7 +50,7 @@ return {
       -- disable formatting capabilities for specific language servers
       disabled = {
         "lua_ls",
-        "volar",    -- use prettier
+        "volar", -- use prettier
         "eslint_d", -- use prettier
       },
       -- default format timeout
