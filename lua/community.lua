@@ -7,5 +7,5 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 
   { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.vue" },
+  -- { import = "astrocommunity.pack.vue" },
 }
