@@ -33,6 +33,18 @@ return {
             },
           },
         },
+        maven = {
+          downloadSources = true,
+        },
+        implementationsCodeLens = {
+          enabled = true,
+        },
+        referencesCodeLens = { -- Turn this off, causes lag.
+          enabled = false,
+        },
+        references = {
+          includeDecompiledSources = false,
+        },
         format = {
           settings = {
             url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-custom-style.xml",
@@ -41,5 +53,6 @@ return {
         },
       },
     },
+    handlers = {},
   },
 }
