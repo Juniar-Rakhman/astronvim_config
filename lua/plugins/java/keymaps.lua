@@ -4,30 +4,33 @@
 -- Keymap for Java --
 ---------------------------------------------------------------------------------------------------------------------
 
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then return end
+local which_key_ok, which_key = pcall(require, "which-key")
+if not which_key_ok then return end
+
+local jdtls_ok, jdtls = pcall(require, "jdtls")
+if not jdtls_ok then return end
 
 local mappings = {
   c = {
     name = "Code",
-    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
-    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
-    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
-    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+    o = { function() jdtls.organize_imports() end, "Organize Imports" },
+    v = { function() jdtls.extract_variable() end, "Extract Variable" },
+    c = { function() require("jdtls").extract_constant() end, "Extract Constant" },
+    t = { function() require("jdtls").test_nearest_method() end, "Test Method" },
+    T = { function() require("jdtls").test_class() end, "Test Class" },
     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
-    a = { "<Cmd>lua AttachDebugger('localhost', 5005)<CR>", "Attach Debugger - localhost" },
-    G = { "<Cmd>lua require('jdtls.tests').generate()<CR>", "Generate Test" },
-    g = { "<Cmd>lua require('jdtls.tests').goto_subjects()<CR>", "Go To Subjects" },
+    a = { function() AttachDebugger("localhost", 5005) end, "Attach Debugger - localhost" },
+    G = { function() require("jdtls.tests").generate() end, "Generate Test" },
+    g = { function() require("jdtls.tests").goto_subjects() end, "Go To Subjects" },
   },
 }
 
 local vmappings = {
   c = {
     name = "Code",
-    v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
-    c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
-    m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
+    v = { function() require("jdtls").extract_variable() end, "Extract Variable" },
+    c = { function() require("jdtls").extract_constant() end, "Extract Constant" },
+    m = { function() require("jdtls").extract_method() end, "Extract Method" },
   },
 }
 
