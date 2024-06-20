@@ -18,7 +18,7 @@ return {
         linter_flags = {},
 
         -- lint_prompt_style: qf (quickfix), vt (virtual text)
-        lint_prompt_style = "qf",
+        lint_prompt_style = "vt",
 
         -- formatter: goimports, gofmt, gofumpt
         formatter = "gofumpt",

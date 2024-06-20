@@ -56,6 +56,7 @@ return {
 
         ["<Leader>w"] = false,
         ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+        ["gr"] = { "<cmd>Telescope lsp_references<cr>", desc = "Go to references" },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
