@@ -62,6 +62,22 @@ return {
           function() vim.lsp.buf.hover() end,
           desc = "Hover symbol details",
         },
+        ["gd"] = {
+          function() require("telescope.builtin").lsp_definitions { reuse_win = true } end,
+          desc = "Go to definitions",
+        },
+        ["gr"] = {
+          function() require("telescope.builtin").lsp_references { reuse_win = true } end,
+          desc = "Go to references",
+        },
+        ["gy"] = {
+          function() require("telescope.builtin").lsp_type_definitions { reuse_win = true } end,
+          desc = "Go to type definition",
+        },
+        ["gI"] = {
+          function() require("telescope.builtin").lsp_implementations { reuse_win = true } end,
+          desc = "Go to implementations",
+        },
       },
       i = {
         ["<C-l>"] = {
