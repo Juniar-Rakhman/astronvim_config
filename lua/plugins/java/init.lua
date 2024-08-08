@@ -24,12 +24,12 @@ return {
         configuration = {
           runtimes = {
             {
-              name = "JavaSE-17",
-              path = os.getenv "HOME" .. "/.sdkman/candidates/java/17.0.9-tem",
-            },
-            {
               name = "JavaSE-21",
               path = os.getenv "HOME" .. "/.sdkman/candidates/java/21.0.1-tem",
+            },
+            {
+              name = "JavaSE-17",
+              path = os.getenv "HOME" .. "/.sdkman/candidates/java/17.0.9-tem",
             },
           },
         },

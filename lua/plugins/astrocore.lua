@@ -56,6 +56,11 @@ return {
 
         ["<Leader>w"] = false,
         ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+
+        -- disable builtin nvim gr* mappings, see remaps in astrolsp.lua
+        ["grr"] = false,
+        ["grn"] = false,
+        ["gra"] = false,
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
