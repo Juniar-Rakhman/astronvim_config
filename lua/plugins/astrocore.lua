@@ -61,6 +61,7 @@ return {
         ["grr"] = false,
         ["grn"] = false,
         ["gra"] = false,
+        ["go"] = false,
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },

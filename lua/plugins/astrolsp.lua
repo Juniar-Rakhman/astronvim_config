@@ -93,6 +93,10 @@ return {
           function() vim.lsp.buf.hover() end,
           desc = "Hover symbol details",
         },
+        ["go"] = {
+          function() require("telescope.builtin").lsp_incoming_calls { reuse_win = true } end,
+          desc = "Incominng Calls",
+        },
         ["gd"] = {
           function() require("telescope.builtin").lsp_definitions { reuse_win = true } end,
           desc = "Go to definitions",
