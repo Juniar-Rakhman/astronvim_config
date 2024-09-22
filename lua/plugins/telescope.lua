@@ -29,6 +29,7 @@ return {
     return require("astrocore").extend_tbl(opts, {
       defaults = {
         file_ignore_patterns = {
+          "^node_modules/",
           "^node_",
           "^.git/",
           "^target/",

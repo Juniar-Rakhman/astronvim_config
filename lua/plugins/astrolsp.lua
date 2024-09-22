@@ -75,12 +75,9 @@ return {
       },
     },
     formatting = {
-      format_on_save = {
-        enabled = true,
-      },
       -- disable formatting capabilities for specific language servers
       disabled = {
-        "lua_ls",
+        "lua_ls", -- use stylua
         "volar", -- use prettier
         "eslint_d", -- use prettier
       },
@@ -94,23 +91,23 @@ return {
           desc = "Hover symbol details",
         },
         ["go"] = {
-          function() require("telescope.builtin").lsp_incoming_calls { reuse_win = true } end,
+          function() require("telescope.builtin").lsp_incoming_calls { reuse_win = false } end,
           desc = "Incominng Calls",
         },
         ["gd"] = {
-          function() require("telescope.builtin").lsp_definitions { reuse_win = true } end,
+          function() require("telescope.builtin").lsp_definitions { reuse_win = false } end,
           desc = "Go to definitions",
         },
         ["gr"] = {
-          function() require("telescope.builtin").lsp_references { reuse_win = true } end,
+          function() require("telescope.builtin").lsp_references { reuse_win = false } end,
           desc = "Go to references",
         },
         ["gy"] = {
-          function() require("telescope.builtin").lsp_type_definitions { reuse_win = true } end,
+          function() require("telescope.builtin").lsp_type_definitions { reuse_win = false } end,
           desc = "Go to type definition",
         },
         ["gI"] = {
-          function() require("telescope.builtin").lsp_implementations { reuse_win = true } end,
+          function() require("telescope.builtin").lsp_implementations { reuse_win = false } end,
           desc = "Go to implementations",
         },
       },

@@ -33,6 +33,8 @@ return {
         tabstop = 2,
         shiftwidth = 2,
         showtabline = 0,
+        cursorline = true,
+        cursorcolumn = true,
         formatoptions = "cro",
       },
       g = { -- vim.g.<key>
