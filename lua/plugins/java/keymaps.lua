@@ -34,7 +34,7 @@ local vmappings = {
   },
 }
 
-which_key.register(mappings, {
+which_key.add(mappings, {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -43,7 +43,7 @@ which_key.register(mappings, {
   nowait = true, -- use `nowait` when creating keymaps
 })
 
-which_key.register(vmappings, {
+which_key.add(vmappings, {
   mode = "v", -- VISUAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings

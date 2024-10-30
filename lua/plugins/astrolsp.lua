@@ -64,15 +64,35 @@ return {
           },
         },
       },
-      lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
-      volar = {
-        filetypes = { "typescript", "javascript", "vue", "json" },
-        init_options = {
-          typescript = {
-            tsdk = os.getenv "HOME" .. "/.nvm/versions/node/v17.9.1/lib/node_modules/typescript/lib/",
-          },
+      lua_ls = {
+        settings = {
+          Lua = { hint = { enable = true, arrayIndex = "Disable" } },
         },
       },
+      -- volar = {
+      --   filetypes = { "typescript", "javascript", "vue", "json" },
+      --   init_options = {
+      --     typescript = {
+      --       tsdk = os.getenv "HOME" .. "/.nvm/versions/node/v17.9.1/lib/node_modules/typescript/lib/",
+      --     },
+      --   },
+      -- },
+      -- ts_ls = {
+      --   init_options = {
+      --     plugins = {
+      --       {
+      --         name = "@vue/typescript-plugin",
+      --         location = "HOME" .. "/.nvm/versions/20.14.0/lib/node_modules/@vue/typescript-plugin",
+      --         languages = { "javascript", "typescript", "vue" },
+      --       },
+      --     },
+      --   },
+      --   filetypes = {
+      --     "javascript",
+      --     "typescript",
+      --     "vue",
+      --   },
+      -- },
     },
     formatting = {
       -- disable formatting capabilities for specific language servers
