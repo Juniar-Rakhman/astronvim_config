@@ -7,4 +7,5 @@ return {
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
 }
