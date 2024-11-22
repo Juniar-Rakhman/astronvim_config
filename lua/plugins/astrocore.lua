@@ -36,7 +36,7 @@ return {
         cursorline = true,
         cursorcolumn = true,
         formatoptions = "cro",
-        guicursor = "a:blinkon10",
+        guicursor = "a:blinkon100",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
