@@ -32,7 +32,7 @@ return {
         expandtab = true,
         tabstop = 2,
         shiftwidth = 2,
-        showtabline = 0,
+        showtabline = 2,
         cursorline = true,
         cursorcolumn = true,
         formatoptions = "cro",
@@ -56,6 +56,8 @@ return {
         ["<Leader>c"] = false, -- c will be used for code related functionalities
         ["<Leader>o"] = { "<cmd>only<cr>", desc = "Only display current window" },
         ["<Leader>q"] = { "<C-w>q", desc = "Quit current window" },
+        ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
+        ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
 
         ["<Leader>w"] = false,
         ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
