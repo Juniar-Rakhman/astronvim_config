@@ -2,7 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   -- TODO: remove when 0.1.8 comes out
   branch = "master",
-  commit = "05f4d6f",
+  -- commit = "05f4d6f",
   opts = function(_, opts)
     local actions = require "telescope.actions"
     local get_icon = require("astroui").get_icon

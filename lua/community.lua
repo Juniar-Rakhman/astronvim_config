@@ -7,5 +7,8 @@ return {
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.vue" },
+  { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
+  -- { import = "astrocommunity.completion.avante-nvim" },
 }

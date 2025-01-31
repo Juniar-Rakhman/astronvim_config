@@ -15,7 +15,11 @@ return {
       luasnip.filetype_extend("javascript", { "javascriptreact" })
     end,
   },
-
+  -- {
+  --   "sphamba/smear-cursor.nvim",
+  --   opts = {},
+  -- },
+  -- { "lewis6991/spellsitter.nvim" },
   {
     "windwp/nvim-autopairs",
     config = function(plugin, opts)
