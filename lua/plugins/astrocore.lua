@@ -32,7 +32,7 @@ return {
         expandtab = true,
         tabstop = 2,
         shiftwidth = 2,
-        showtabline = 2,
+        showtabline = 1,
         cursorline = true,
         cursorcolumn = true,
         formatoptions = "cro",
@@ -42,7 +42,7 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-        netrw_browsex_viewer = "/Applications/Firefox Developer Edition.app",
+        netrw_browsex_viewer = "/Applications/Arc.app",
       },
     },
 
@@ -61,17 +61,21 @@ return {
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
 
         ["<Leader>w"] = false,
-        ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+
+        ["<C-s>"] = { ":wa<cr>", desc = "Save All" },
 
         -- disable builtin nvim gr* mappings, see remaps in astrolsp.lua
         ["grr"] = false,
         ["grn"] = false,
         ["gra"] = false,
         ["go"] = false,
+
+        ["<Leader>D"] = { "<cmd>DBUIToggle<cr>", desc = "Database UI" },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
         [">"] = { ">gv", desc = "Indent line" },
+        ["p"] = { '"_dP', desc = "Paste without overwriting register" },
       },
     },
   },

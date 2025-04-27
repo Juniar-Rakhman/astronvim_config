@@ -40,6 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function() vim.api.nvim_command "Codeium Enable" end,
 })
 
+-- Enable Java specific keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
   pattern = "*.java",
   group = vim.api.nvim_create_augroup("code_keymap_java", { clear = true }),
