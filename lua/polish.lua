@@ -2,19 +2,6 @@
 -- things like custom filetypes. This just pure lua so anything that doesn't
 -- fit in the normal config locations above can go here
 
--- Set up custom filetypes
--- vim.filetype.add {
---   extension = {
---     foo = "fooscript",
---   },
---   filename = {
---     ["Foofile"] = "fooscript",
---   },
---   pattern = {
---     ["~/%.config/foo/.*"] = "fooscript",
---   },
--- }
-
 -- for text like documents enable wrap and spell
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown", "text", "plaintex" },
@@ -25,7 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- https://github.com/AstroNvim/AstroNvim/issues/1593
+-- FIX: https://github.com/AstroNvim/AstroNvim/issues/1593
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   desc = "Disable comment continuation",
@@ -38,6 +25,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Enable Codeium on startup",
   group = vim.api.nvim_create_augroup("auto_codeium", { clear = true }),
   callback = function() vim.api.nvim_command "Codeium Enable" end,
+})
+
+-- On startup change working directory to current folder / file
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local arg = vim.fn.argv(0)
+    if not arg then return end
+
+    local stat = vim.loop.fs_stat(arg)
+    if not stat then return end
+
+    if stat.type == "directory" then
+      vim.cmd.cd(arg)
+    elseif stat.type == "file" then
+      vim.cmd.cd(vim.fn.fnamemodify(arg, ":h"))
+    end
+  end,
 })
 
 -- Enable Java specific keymaps
