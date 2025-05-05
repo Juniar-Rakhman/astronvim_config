@@ -37,8 +37,24 @@ return {
             profile = "GoogleStyle",
           },
         },
+        compiler = {
+          taskTags = "", -- disables task tag diagnostics entirely
+          taskPriorities = "", -- no priorities since there are no task tags
+          taskCaseSensitive = false, -- doesn't matter, but kept explicit
+        },
       },
     },
-    handlers = {},
+    handlers = {
+      -- Do not show TODO diagnostics
+      ["textDocument/publishDiagnostics"] = function(err, result, ctx)
+        if result and result.diagnostics then
+          result.diagnostics = vim.tbl_filter(
+            function(diagnostic) return not diagnostic.message:match "^TODO" end,
+            result.diagnostics
+          )
+        end
+        vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
+      end,
+    },
   },
 }

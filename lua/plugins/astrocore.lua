@@ -14,7 +14,7 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
+      diagnostics = { virtual_text = false, virtual_lines = true }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
@@ -71,6 +71,13 @@ return {
         ["<S-l>"] = { "$", desc = "bol" },
       },
       n = {
+        -- disable builtin nvim gr* mappings, see remaps in astrolsp.lua
+        ["grr"] = false,
+        ["grn"] = false,
+        ["gra"] = false,
+        -- will be used for something else
+        ["go"] = false,
+
         -- navigate buffer tabs
         ["<leader>b"] = { "<cmd>Neotree buffers<cr>", desc = "Buffer list" },
         ["<Leader>c"] = false, -- c will be used for code related functionalities
@@ -78,6 +85,11 @@ return {
         ["<Leader>q"] = { "<C-w>q", desc = "Quit current window" },
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
+      },
+      v = {
+        ["<"] = { "<gv", desc = "Unindent line" },
+        [">"] = { ">gv", desc = "Indent line" },
+        ["p"] = { '"_dP', desc = "Paste without overwriting register" },
       },
     },
   },

@@ -51,21 +51,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(_) require "plugins.java.keymaps" end,
 })
 
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = vim.api.nvim_create_augroup("Lsp_signature", { clear = true }),
---   callback = function(args)
---     local bufnr = args.buf
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     if vim.tbl_contains({ "null-ls" }, client.name) then -- blacklist lsp
---       return
---     end
---
---     require("lsp_signature").on_attach({
---       -- ... setup options here ...
---       bind = true, -- This is mandatory, otherwise border config won't get registered.
---       handler_opts = {
---         border = "rounded",
---       },
---     }, bufnr)
---   end,
--- })
+-- TODO: enable Go specific keymaps
+
+-- TODO: enable Rust specific keymaps
+
+-- TODO: enable JS specific keymaps
+
+-- TODO: enable JS specific keymaps

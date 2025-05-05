@@ -8,15 +8,13 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    -- Configuration table of features provided by AstroLSP
     features = {
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
     -- customize lsp formatting options
     formatting = {
-      -- control auto formatting on save
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
@@ -26,9 +24,10 @@ return {
           -- "python",
         },
       },
+      -- TODO: do something
       disabled = { -- disable formatting capabilities for the listed language servers
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+        "lua_ls",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -42,7 +41,42 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              shadow = true,
+              nilness = true,
+              unusedresult = true,
+              unusedparams = true,
+              unusedwrite = true,
+              useany = true,
+              unreachable = true,
+            },
+            experimentalPostfixCompletions = true,
+            gofumpt = true,
+            staticcheck = true,
+            usePlaceholders = true,
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      },
+      lua_ls = {
+        settings = {
+          Lua = { hint = { enable = true, arrayIndex = "Disable" } },
+        },
+      },
+      -- clangd
+      -- java
+      -- ts/js
     },
     -- customize how language servers are attached
     handlers = {
@@ -78,16 +112,39 @@ return {
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {
-        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
+        K = {
+          function() vim.lsp.buf.hover() end,
+          desc = "Hover symbol details",
+        },
         gD = {
-          function() vim.lsp.buf.declaration() end,
+          function() require("snacks.picker").lsp_declarations() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
+        },
+        go = {
+          function() vim.lsp.buf.incoming_calls() end,
+          desc = "Incominng Calls",
+        },
+        gd = {
+          function() require("snacks.picker").lsp_definitions() end,
+          desc = "Go to definitions",
+        },
+        gr = {
+          function() require("snacks.picker").lsp_references() end,
+          desc = "Go to references",
+        },
+        gy = {
+          function() require("snacks.picker").lsp_type_definitions() end,
+          desc = "Go to type definition",
+        },
+        gI = {
+          function() vim.lsp.buf.implementation() end,
+          desc = "Go to implementations",
         },
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client)
+          cond = function(client, test)
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
