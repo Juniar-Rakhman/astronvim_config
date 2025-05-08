@@ -117,7 +117,7 @@ return {
           desc = "Hover symbol details",
         },
         gD = {
-          function() require("snacks.picker").lsp_declarations() end,
+          function() require("telescope.builtin").lsp_references() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
         },
@@ -126,19 +126,19 @@ return {
           desc = "Incominng Calls",
         },
         gd = {
-          function() require("snacks.picker").lsp_definitions() end,
+          function() require("telescope.builtin").lsp_definitions() end,
           desc = "Go to definitions",
         },
         gr = {
-          function() require("snacks.picker").lsp_references() end,
+          function() require("telescope.builtin").lsp_references() end,
           desc = "Go to references",
         },
         gy = {
-          function() require("snacks.picker").lsp_type_definitions() end,
+          function() require("telescope.builtin").lsp_type_definitions() end,
           desc = "Go to type definition",
         },
         gI = {
-          function() vim.lsp.buf.implementation() end,
+          function() require("telescope.builtin").lsp_implementations() end,
           desc = "Go to implementations",
         },
         ["<Leader>uY"] = {

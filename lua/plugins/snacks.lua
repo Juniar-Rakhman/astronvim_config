@@ -29,22 +29,5 @@ return {
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ]],
       },
     },
-    picker = {
-      layout = {
-        preset = "vertical",
-      },
-      files = {
-        exclude = {
-          "^node_modules/",
-          "^node_",
-          "^.git/",
-          "^target/",
-          "^build/",
-          "^dist/",
-          "^vendor/",
-          "^__pycache__/",
-        },
-      },
-    },
   },
 }
