@@ -44,7 +44,7 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
-
+        conceallevel = 1, -- sets vim.opt.conceallevel
         autoindent = true, -- sets vim.opt.autoindent
         winblend = 10, -- sets floating window transparency
         expandtab = true,

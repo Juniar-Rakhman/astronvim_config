@@ -21,6 +21,7 @@ return {
         symbols_outline = true,
         telescope = true,
         which_key = true,
+        rainbow_delimiters = true,
       },
     },
   },

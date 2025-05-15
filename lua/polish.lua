@@ -44,6 +44,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
+-- Enable Markdown (Obsidian) keymaps
+vim.api.nvim_create_autocmd("LspAttach", {
+  pattern = "*.md",
+  group = vim.api.nvim_create_augroup("code_keymap_markdown", { clear = true }),
+  callback = function(_) require "plugins.obsidian.keymaps" end,
+})
+
 -- Enable Java specific keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
   pattern = "*.java",
@@ -51,10 +58,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(_) require "plugins.java.keymaps" end,
 })
 
--- TODO: enable Go specific keymaps
+-- Enable Go specific keymaps
+vim.api.nvim_create_autocmd("LspAttach", {
+  pattern = "*.go",
+  group = vim.api.nvim_create_augroup("code_keymap_go", { clear = true }),
+  callback = function(_) require "plugins.go.keymaps" end,
+})
 
 -- TODO: enable Rust specific keymaps
 
 -- TODO: enable JS specific keymaps
 
--- TODO: enable JS specific keymaps
+-- TODO: enable Kotlin specific keymaps

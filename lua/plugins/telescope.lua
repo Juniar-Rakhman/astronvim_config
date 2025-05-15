@@ -33,9 +33,9 @@ return {
           "^build/",
           "^dist/",
           "^vendor/",
-          "^__pycache__/",
-          "^.m2",
+          "^.m2/",
           "^import",
+          "%.class$",
         },
         layout_strategy = "vertical",
 

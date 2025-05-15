@@ -2,5 +2,8 @@
     "diagnostics.globals": [
         "null_ls",
         "vim"
+    ],
+    "diagnostics.disable": [
+        "duplicate-set-field"
     ]
 }

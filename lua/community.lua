@@ -8,13 +8,11 @@ return {
   { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.motion.flash-nvim" },
+  { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
   -- packs
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.pack.full-dadbod" },
-
-  -- { import = "astrocommunity.note-taking.obsidian-nvim" },
-  { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
 }
