@@ -24,44 +24,43 @@ if not which_key_ok then return end
 local jdtls_ok, jdtls = pcall(require, "jdtls")
 if not jdtls_ok then return end
 
+local jdtls_test_ok, jdtls_test = pcall(require, "jdtls.tests")
+if not jdtls_test_ok then return end
+
 local mappings = {
-  c = {
-    name = "Code",
-    o = { function() jdtls.organize_imports() end, "Organize Imports" },
-    v = { function() jdtls.extract_variable() end, "Extract Variable" },
-    c = { function() require("jdtls").extract_constant() end, "Extract Constant" },
-    t = { function() require("jdtls").test_nearest_method() end, "Test Method" },
-    T = { function() require("jdtls").test_class() end, "Test Class" },
-    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
-    a = { function() AttachDebugger("localhost", 5005) end, "Attach Debugger - localhost" },
-    G = { function() require("jdtls.tests").generate() end, "Generate Test" },
-    g = { function() require("jdtls.tests").goto_subjects() end, "Go To Subjects" },
+  { "<Leader>c", group = "Code (Java)" },
+  {
+    mode = { "n", "v" },
+    { "<Leader>cv", function() jdtls.extract_variable() end, desc = "Extract Variable" },
+    { "<Leader>cc", function() jdtls.extract_constant() end, desc = "Extract Constant" },
+  },
+  {
+    mode = { "n" },
+    { "<Leader>co", function() jdtls.organize_imports() end, desc = "Extract Method" },
+    { "<Leader>ct", function() jdtls.test_nearest_method() end, desc = "Test Method" },
+    { "<Leader>cT", function() jdtls.test_class() end, desc = "Test Class" },
+    { "<Leader>ca", function() AttachDebugger("localhost", 5005) end, desc = "Attach Debugger - localhost" },
+    { "<Leader>cg", function() jdtls_test.generate() end, desc = "Generate Test" },
+    { "<Leader>cG", function() jdtls_test.goto_subjects() end, desc = "Go to Subject" },
   },
 }
 
-local vmappings = {
-  c = {
-    name = "Code",
-    v = { function() require("jdtls").extract_variable() end, "Extract Variable" },
-    c = { function() require("jdtls").extract_constant() end, "Extract Constant" },
-    m = { function() require("jdtls").extract_method() end, "Extract Method" },
-  },
-}
+wk.add(mappings)
 
-wk.register(mappings, {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-})
-
-wk.register(vmappings, {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-})
+-- wk.register(mappings, {
+--   mode = "n", -- NORMAL mode
+--   prefix = "<leader>",
+--   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--   silent = true, -- use `silent` when creating keymaps
+--   noremap = true, -- use `noremap` when creating keymaps
+--   nowait = true, -- use `nowait` when creating keymaps
+-- })
+--
+-- wk.register(vmappings, {
+--   mode = "v", -- VISUAL mode
+--   prefix = "<leader>",
+--   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+--   silent = true, -- use `silent` when creating keymaps
+--   noremap = true, -- use `noremap` when creating keymaps
+--   nowait = true, -- use `nowait` when creating keymaps
+-- })

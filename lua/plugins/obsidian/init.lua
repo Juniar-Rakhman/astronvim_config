@@ -31,21 +31,41 @@ return {
     return astrocore.extend_tbl(opts, {
       dir = vim.env.HOME .. "/" .. vault,
       use_advanced_uri = true,
-      finder = (astrocore.is_available "telescope.nvim" and "telescope.nvim")
-        or (astrocore.is_available "fzf-lua" and "fzf-lua")
-        or (astrocore.is_available "mini.pick" and "mini.pick"),
+      finder = (astrocore.is_available "telescope.nvim" and "telescope.nvim"),
 
       templates = {
-        subdir = "Extras/Templates",
+        folder = "00_template",
+        date_format = "%Y-%m-%d-%a",
+        time_format = "%H:%M",
+        -- A map for custom variables, the key should be the variable and the value a function
+        substitutions = {
+          today = function() return os.date("%Y-%m-%d", os.time()) end,
+          yesterday = function() return os.date("%Y-%m-%d", os.time() - 86400) end,
+          tomorrow = function() return os.date("%Y-%m-%d", os.time() + 86400) end,
+        },
       },
 
       completion = {
-        nvim_cmp = astrocore.is_available "nvim-cmp",
+        nvim_cmp = false,
+        blink = true,
+      },
+
+      daily_notes = {
+        folder = "04_dailies",
+        date_format = "%Y-%m-%d",
+        alias_format = "%B %-d, %Y",
+        -- Optional, default tags to add to each new daily note created.
+        default_tags = { "daily-notes" },
+        -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+        template = "daily",
+        -- Optional, if you want `Obsidian yesterday` to return the last work day or `Obsidian tomorrow` to return the next work day.
+        workdays_only = true,
       },
 
       note_frontmatter_func = function(note)
         -- This is equivalent to the default frontmatter function.
         local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
         if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
