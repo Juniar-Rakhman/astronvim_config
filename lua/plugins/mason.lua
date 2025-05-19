@@ -13,14 +13,14 @@ return {
         "dockerfile-language-server",
         "yaml-language-server",
         "bash-language-server",
-        "marksman",
+        -- "marksman", -- using obsidian
 
         -- install formatters
         "prettier",
         "stylua",
 
         -- install debuggers
-        "debugpy",
+        -- "debugpy", -- not doing python yet
 
         -- install any other package
         "tree-sitter-cli",

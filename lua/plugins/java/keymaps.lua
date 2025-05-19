@@ -27,7 +27,7 @@ if not jdtls_ok then return end
 local jdtls_test_ok, jdtls_test = pcall(require, "jdtls.tests")
 if not jdtls_test_ok then return end
 
-local mappings = {
+wk.add {
   { "<Leader>c", group = "Code (Java)" },
   {
     mode = { "n", "v" },
@@ -44,8 +44,6 @@ local mappings = {
     { "<Leader>cG", function() jdtls_test.goto_subjects() end, desc = "Go to Subject" },
   },
 }
-
-wk.add(mappings)
 
 -- wk.register(mappings, {
 --   mode = "n", -- NORMAL mode
