@@ -72,6 +72,7 @@ return {
       },
       n = {
         -- disable builtin nvim gr* mappings, see remaps in astrolsp.lua
+        ["gr"] = false,
         ["grr"] = false,
         ["grn"] = false,
         ["gra"] = false,

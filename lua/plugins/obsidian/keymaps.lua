@@ -10,8 +10,9 @@ local mappings = {
   { "<Leader>c", group = "Code (Obsidian)" },
   {
     mode = { "n" },
-    { "gd", "<Cmd>Obsidian follow_link<cr>", desc = "Go to link" },
-    { "gr", "<Cmd>Obsidian backlinks<cr>", desc = "Go to references" },
+    noremap = true,
+    { "gd", "<Cmd>Obsidian follow_link<cr>", desc = "Go to link", remap = true },
+    { "gb", "<Cmd>Obsidian backlinks<cr>", desc = "Go to backlinks", remap = true },
     { "<Leader>co", "<Cmd>Obsidian<cr>", desc = "Commands" },
     { "<Leader>ch", "<Cmd>Obsidian toggle_checkbox<cr>", desc = "Toggle Checkbox" },
     { "<Leader>cf", "<Cmd>Obsidian follow_link vsplit<cr>", desc = "Follow Link (vsplit)" },

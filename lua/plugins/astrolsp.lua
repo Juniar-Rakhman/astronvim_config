@@ -81,7 +81,7 @@ return {
         },
       },
     },
-    -- mappings to be set up on attaching of a language server
+    -- mappings to be set upon attaching of a language server
     mappings = {
       n = {
         K = {
