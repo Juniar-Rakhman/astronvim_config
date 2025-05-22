@@ -62,7 +62,7 @@ return {
               ["<C-s>"] = flash,
               ["<CR>"] = actions.select_default + actions.center,
             },
-            n = { s = flash },
+            n = { s = flash, ["<CR>"] = actions.select_default + actions.center },
           },
         },
         pickers = {

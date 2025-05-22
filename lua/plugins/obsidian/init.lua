@@ -34,7 +34,7 @@ return {
       finder = (astrocore.is_available "telescope.nvim" and "telescope.nvim"),
 
       templates = {
-        folder = "00_template",
+        folder = "template",
         date_format = "%Y-%m-%d-%a",
         time_format = "%H:%M",
         -- A map for custom variables, the key should be the variable and the value a function
@@ -45,13 +45,15 @@ return {
         },
       },
 
+      -- notes_subdir = "notes",
+
       completion = {
         nvim_cmp = false,
         blink = true,
       },
 
       daily_notes = {
-        folder = "04_dailies",
+        folder = "dailies",
         date_format = "%Y-%m-%d",
         alias_format = "%B %-d, %Y",
         -- Optional, default tags to add to each new daily note created.
