@@ -32,11 +32,11 @@ wk.add {
   {
     mode = { "n", "v" },
     { "<Leader>cv", function() jdtls.extract_variable() end, desc = "Extract Variable" },
-    { "<Leader>cc", function() jdtls.extract_constant() end, desc = "Extract Constant" },
+    { "<Leader>co", function() jdtls.extract_constant() end, desc = "Extract Constant" },
   },
   {
     mode = { "n" },
-    { "<Leader>co", function() jdtls.organize_imports() end, desc = "Extract Method" },
+    { "<Leader>cm", function() jdtls.organize_imports() end, desc = "Extract Method" },
     { "<Leader>ct", function() jdtls.test_nearest_method() end, desc = "Test Method" },
     { "<Leader>cT", function() jdtls.test_class() end, desc = "Test Class" },
     { "<Leader>ca", function() AttachDebugger("localhost", 5005) end, desc = "Attach Debugger - localhost" },

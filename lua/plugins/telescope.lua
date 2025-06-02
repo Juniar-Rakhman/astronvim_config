@@ -36,8 +36,7 @@ return {
             "^dist/",
             "^vendor/",
             "^.m2/",
-            "^import",
-            "%.class$",
+            -- "%.class$",
           },
           layout_strategy = "vertical",
 
