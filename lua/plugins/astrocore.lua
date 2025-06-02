@@ -86,6 +86,7 @@ return {
         ["<Leader>q"] = { "<C-w>q", desc = "Quit current window" },
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
+        ["<Leader>D"] = { "<cmd>DBUI<cr>", desc = "DB UI" },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
