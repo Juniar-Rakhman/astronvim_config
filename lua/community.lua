@@ -12,6 +12,8 @@ return {
   -- packs
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.java" },
+  -- { import = "astrocommunity.pack.spring-boot" },
+
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.pack.full-dadbod" },

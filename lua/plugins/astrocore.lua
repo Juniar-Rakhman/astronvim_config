@@ -86,7 +86,10 @@ return {
         ["<Leader>q"] = { "<C-w>q", desc = "Quit current window" },
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
-        ["<Leader>D"] = { "<cmd>DBUI<cr>", desc = "DB UI" },
+
+        ["<Leader>D"] = { group = "Database Tools" },
+        ["<Leader>Dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle" },
+        ["<Leader>Db"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },

@@ -123,6 +123,10 @@ return {
           function() require("snacks").picker.notifications() end,
           desc = "Find Notifications",
         },
+        ["<Leader>lG"] = {
+          function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
+          desc = "Find Workspace Symbols",
+        },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
