@@ -33,7 +33,7 @@ return {
         },
         format = {
           settings = {
-            url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-custom-style.xml",
+            url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-indent-4-style.xml",
             profile = "GoogleStyle",
           },
         },
