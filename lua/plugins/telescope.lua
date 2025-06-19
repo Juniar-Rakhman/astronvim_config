@@ -32,7 +32,7 @@ return {
             "^node_",
             "^.git/",
             "^target/",
-            "^build/",
+            -- "^build/",
             "^dist/",
             "^vendor/",
             "^.m2/",

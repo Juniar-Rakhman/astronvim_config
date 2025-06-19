@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- workaround to disable comment continuation
 -- FIX: https://github.com/AstroNvim/AstroNvim/issues/1593
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
