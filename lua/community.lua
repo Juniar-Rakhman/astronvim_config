@@ -2,7 +2,7 @@
 return {
   { "AstroNvim/astrocommunity" },
   -- recipes
-  { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
+  -- { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },
   --  tools
   { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
   { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
