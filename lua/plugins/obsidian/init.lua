@@ -33,6 +33,13 @@ return {
       use_advanced_uri = true,
       finder = (astrocore.is_available "telescope.nvim" and "telescope.nvim"),
 
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/projects/obsidian_vault/personal",
+        },
+      },
+
       templates = {
         folder = "template",
         date_format = "%Y-%m-%d-%a",
@@ -48,8 +55,8 @@ return {
       -- notes_subdir = "notes",
 
       completion = {
-        nvim_cmp = false,
-        blink = true,
+        nvim_cmp = true,
+        blink = false,
       },
 
       daily_notes = {
