@@ -10,6 +10,10 @@ return {
         configuration = {
           runtimes = {
             {
+              name = "JavaSE-11",
+              path = os.getenv "HOME" .. "/.sdkman/candidates/java/11.0.9-tem",
+            },
+            {
               name = "JavaSE-17",
               path = os.getenv "HOME" .. "/.sdkman/candidates/java/17.0.9-tem",
             },
@@ -33,7 +37,7 @@ return {
         },
         format = {
           settings = {
-            url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-indent-4-style.xml",
+            url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-custom-style.xml",
             profile = "GoogleStyle",
           },
         },
