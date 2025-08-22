@@ -47,6 +47,7 @@ return {
         conceallevel = 1, -- sets vim.opt.conceallevel
         autoindent = true, -- sets vim.opt.autoindent
         winblend = 10, -- sets floating window transparency
+        pumblend = 10, -- sets popup menu transparency
         expandtab = true,
         tabstop = 2,
         shiftwidth = 2,

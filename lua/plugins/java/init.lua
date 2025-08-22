@@ -11,7 +11,7 @@ return {
           runtimes = {
             {
               name = "JavaSE-11",
-              path = os.getenv "HOME" .. "/.sdkman/candidates/java/11.0.9-tem",
+              path = os.getenv "HOME" .. "/.sdkman/candidates/java/11.0.27-tem",
             },
             {
               name = "JavaSE-17",
@@ -49,7 +49,7 @@ return {
       },
     },
     handlers = {
-      -- Do not show TODO diagnostics
+      -- filter out TODO diagnostics
       ["textDocument/publishDiagnostics"] = function(err, result, ctx)
         if result and result.diagnostics then
           result.diagnostics = vim.tbl_filter(
