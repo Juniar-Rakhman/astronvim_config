@@ -91,11 +91,42 @@ return {
         ["<Leader>D"] = { group = "Database Tools" },
         ["<Leader>Dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle" },
         ["<Leader>Db"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
+
+        -- Opencode.nvim group
+        ["<Leader>O"] = { group = "Opencode" },
+        ["<Leader>Ot"] = { function() require("opencode").toggle() end, desc = "Toggle opencode" },
+        ["<Leader>OA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
+        ["<Leader>Oa"] = { function() require("opencode").ask "@cursor: " end, desc = "Ask opencode about this" },
+        ["<Leader>On"] = { function() require("opencode").command "session_new" end, desc = "New opencode session" },
+        ["<Leader>Oy"] = {
+          function() require("opencode").command "messages_copy" end,
+          desc = "Copy last opencode response",
+        },
+        -- ["<S-C-u>"] = {
+        --   function() require("opencode").command "messages_half_page_up" end,
+        --   desc = "Messages half page up",
+        -- },
+        -- ["<S-C-d>"] = {
+        --   function() require("opencode").command "messages_half_page_down" end,
+        --   desc = "Messages half page down",
+        -- },
+        ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
+        ["<Leader>Oe"] = {
+          function() require("opencode").prompt "Explain @cursor and its context" end,
+          desc = "Explain this code",
+        },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
         [">"] = { ">gv", desc = "Indent line" },
         ["p"] = { '"_dP', desc = "Paste without overwriting register" },
+
+        -- Opencode.nvim visual mode
+        ["<Leader>Oa"] = {
+          function() require("opencode").ask "@selection: " end,
+          desc = "Ask opencode about selection",
+        },
+        ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
       },
     },
   },

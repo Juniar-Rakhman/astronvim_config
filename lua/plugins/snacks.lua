@@ -29,13 +29,13 @@ return {
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ]],
       },
     },
-    picker = {
+    picker = { -- not using snacks picker atm. See telescope config
       layout = {
         preset = "vertical",
       },
     },
     styles = {
-      input = {
+      input = { -- input field will be spawn near the cursor
         relative = "cursor",
         row = -3,
         col = 0,
