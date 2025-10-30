@@ -3,8 +3,8 @@ return {
   { "AstroNvim/astrocommunity" },
   -- recipes
   -- { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },  -- this is slow
-  --  tools
 
+  --  tools
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.completion.nvim-cmp" },
   { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
@@ -12,10 +12,11 @@ return {
   { import = "astrocommunity.lsp.lsp-signature-nvim" },
   { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" },
+
   -- packs
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.laravel" },
+  -- { import = "astrocommunity.pack.laravel" },
 
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.vue" },
