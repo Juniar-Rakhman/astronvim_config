@@ -4,8 +4,9 @@
 
 return {
   "mfussenegger/nvim-jdtls",
-  opts = {
-    settings = {
+  opts = function(_, opts)
+    -- merge user settings into existing opts
+    opts.settings = vim.tbl_deep_extend("force", opts.settings or {}, {
       java = {
         configuration = {
           runtimes = {
@@ -23,18 +24,10 @@ return {
             },
           },
         },
-        maven = {
-          downloadSources = true,
-        },
-        implementationsCodeLens = {
-          enabled = true,
-        },
-        referencesCodeLens = { -- Turn this off, causes lag.
-          enabled = false,
-        },
-        references = {
-          includeDecompiledSources = false,
-        },
+        maven = { downloadSources = true },
+        implementationsCodeLens = { enabled = true },
+        referencesCodeLens = { enabled = false }, -- Turn this off, causes lag.
+        references = { includeDecompiledSources = false },
         format = {
           settings = {
             url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-custom-style.xml",
@@ -47,8 +40,9 @@ return {
           taskCaseSensitive = false, -- doesn't matter, but kept explicit
         },
       },
-    },
-    handlers = {
+    })
+
+    opts.handlers = {
       -- filter out TODO diagnostics
       ["textDocument/publishDiagnostics"] = function(err, result, ctx)
         if result and result.diagnostics then
@@ -59,6 +53,8 @@ return {
         end
         vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
       end,
-    },
-  },
+    }
+
+    return opts
+  end,
 }

@@ -5,7 +5,6 @@ return {
   -- { import = "astrocommunity.recipes.diagnostic-virtual-lines-current-line" },  -- this is slow
 
   --  tools
-  { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.completion.nvim-cmp" },
   { import = "astrocommunity.fuzzy-finder.telescope-nvim" },
   { import = "astrocommunity.split-and-window.colorful-winsep-nvim" },
