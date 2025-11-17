@@ -79,6 +79,19 @@ return {
           end,
         },
       },
+      java_organize_imports = {
+        cond = function(client) return client.name == "jdtls" end,
+        {
+          event = "BufWritePre",
+          desc = "Organize Java imports on save",
+          callback = function()
+            vim.lsp.buf.code_action {
+              context = { only = { "source.organizeImports" } },
+              apply = true,
+            }
+          end,
+        },
+      },
     },
     -- mappings to be set upon attaching of a language server
     mappings = {
@@ -115,7 +128,7 @@ return {
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
-          cond = function(client, test)
+          cond = function(client)
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
@@ -131,7 +144,7 @@ return {
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
-    on_attach = function(client, bufnr)
+    on_attach = function()
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
     end,
