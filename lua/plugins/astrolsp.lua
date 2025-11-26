@@ -48,6 +48,11 @@ return {
       -- clangd
       -- java
       -- ts/js
+      intelephense = {
+        files = {
+          maxSize = 5000000,
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {

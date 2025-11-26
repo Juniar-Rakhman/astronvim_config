@@ -1,8 +1,6 @@
-local vault = "projects/obsidian_vault/personal"
-
 return {
   "obsidian-nvim/obsidian.nvim",
-  event = { "BufReadPre  */" .. vault .. "/*.md" },
+  event = { "BufReadPre  */obsidian_vault/*/*.md" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "hrsh7th/nvim-cmp", optional = true },
@@ -19,7 +17,7 @@ return {
                   return "gf"
                 end
               end,
-              desc = "Follow Link",
+              desc = "Obsidian Follow Link",
             },
           },
         },
@@ -29,14 +27,15 @@ return {
   opts = function(_, opts)
     local astrocore = require "astrocore"
     return astrocore.extend_tbl(opts, {
-      dir = vim.env.HOME .. "/" .. vault,
-      use_advanced_uri = true,
+      open = {
+        use_advanced_uri = true,
+      },
       finder = (astrocore.is_available "telescope.nvim" and "telescope.nvim"),
 
       workspaces = {
         {
           name = "personal",
-          path = "~/projects/obsidian_vault/personal",
+          path = vim.env.HOME .. "/projects/obsidian_vault/personal",
         },
       },
 
@@ -74,10 +73,9 @@ return {
       note_frontmatter_func = function(note)
         -- This is equivalent to the default frontmatter function.
         local out = { id = note.id, aliases = note.aliases, tags = note.tags }
-
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
-        if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
           for k, v in pairs(note.metadata) do
             out[k] = v
           end
