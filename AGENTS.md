@@ -1,12 +1,14 @@
 # AstroNvim Configuration Agent Guidelines
 
 ## Build/Lint/Test Commands
+
 - **Format**: `stylua .` (formats all Lua files)
 - **Lint**: `selene .` (Lua linting with neovim std)
 - **Type check**: Lua LS provides diagnostics via `:LspInfo`
 - **Test**: No formal test suite - validate by restarting Neovim (`nvim --headless +qa`)
 
 ## Code Style Guidelines
+
 - **Indentation**: 2 spaces (configured in .stylua.toml)
 - **Line width**: 120 characters max
 - **Quotes**: Prefer double quotes, auto-convert when appropriate

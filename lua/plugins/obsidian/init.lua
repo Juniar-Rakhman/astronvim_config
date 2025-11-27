@@ -27,6 +27,7 @@ return {
   opts = function(_, opts)
     local astrocore = require "astrocore"
     return astrocore.extend_tbl(opts, {
+      legacy_commands = false,
       open = {
         use_advanced_uri = true,
       },
@@ -86,6 +87,9 @@ return {
       -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
       -- URL it will be ignored but you can customize this behavior here.
       follow_url_func = vim.ui.open,
+      attachments = {
+        img_folder = "./assets",
+      },
     })
   end,
 }
