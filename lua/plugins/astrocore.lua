@@ -95,8 +95,12 @@ return {
         -- Opencode.nvim group
         ["<Leader>O"] = { group = "Opencode" },
         ["<Leader>Ot"] = { function() require("opencode").toggle() end, desc = "Toggle opencode" },
+
         ["<Leader>OA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
-        ["<Leader>Oa"] = { function() require("opencode").ask "@cursor: " end, desc = "Ask opencode about this" },
+        ["<Leader>Oa"] = {
+          function() require("opencode").ask("@this: ", { submit = true }) end,
+          desc = "Ask opencode about this",
+        },
         ["<Leader>On"] = { function() require("opencode").command "session_new" end, desc = "New opencode session" },
         ["<Leader>Oy"] = {
           function() require("opencode").command "messages_copy" end,
@@ -112,7 +116,7 @@ return {
         -- },
         ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
         ["<Leader>Oe"] = {
-          function() require("opencode").prompt "Explain @cursor and its context" end,
+          function() require("opencode").prompt("Explain @this and its context", { submit = true }) end,
           desc = "Explain this code",
         },
       },
