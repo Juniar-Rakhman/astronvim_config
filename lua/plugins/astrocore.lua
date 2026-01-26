@@ -106,14 +106,14 @@ return {
           function() require("opencode").command "messages_copy" end,
           desc = "Copy last opencode response",
         },
-        -- ["<S-C-u>"] = {
-        --   function() require("opencode").command "messages_half_page_up" end,
-        --   desc = "Messages half page up",
-        -- },
-        -- ["<S-C-d>"] = {
-        --   function() require("opencode").command "messages_half_page_down" end,
-        --   desc = "Messages half page down",
-        -- },
+        ["<S-C-k>"] = {
+          function() require("opencode").command "messages_half_page_up" end,
+          desc = "Messages half page up",
+        },
+        ["<S-C-j>"] = {
+          function() require("opencode").command "messages_half_page_down" end,
+          desc = "Messages half page down",
+        },
         ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
         ["<Leader>Oe"] = {
           function() require("opencode").prompt("Explain @this and its context", { submit = true }) end,
