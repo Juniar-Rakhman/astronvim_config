@@ -106,9 +106,8 @@ return {
           desc = "Hover symbol details",
         },
         gD = {
-          function() require("telescope.builtin").lsp_references() end,
+          function() vim.lsp.buf.declaration() end,
           desc = "Declaration of current symbol",
-          cond = "textDocument/declaration",
         },
         go = {
           function() vim.lsp.buf.incoming_calls() end,

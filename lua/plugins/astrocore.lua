@@ -127,7 +127,7 @@ return {
 
         -- Opencode.nvim visual mode
         ["<Leader>Oa"] = {
-          function() require("opencode").ask "@selection: " end,
+          function() require("opencode").ask "@this: " end,
           desc = "Ask opencode about selection",
         },
         ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
