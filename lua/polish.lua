@@ -59,6 +59,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(_) require "plugins.java.keymaps" end,
 })
 
+-- enable compile on save for Java
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   pattern = { "*.java" },
+--   callback = function()
+--     local jdtls_ok, jdtls = pcall(require, "jdtls")
+--     if jdtls_ok then jdtls.compile "full" end
+--   end,
+-- })
+
 -- Enable Go specific keymaps
 vim.api.nvim_create_autocmd("LspAttach", {
   pattern = "*.go",

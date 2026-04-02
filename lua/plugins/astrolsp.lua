@@ -48,6 +48,32 @@ return {
       -- clangd
       -- java
       -- ts/js
+      tsserver = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "literals", -- "none" | "literals" | "all"
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "literals",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
+            },
+          },
+        },
+      },
       intelephense = {
         files = {
           maxSize = 5000000,

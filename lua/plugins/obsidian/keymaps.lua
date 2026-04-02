@@ -19,10 +19,11 @@ local mappings = {
     { "<Leader>ct", "<Cmd>Obsidian tags<cr>", desc = "Search by Tags" },
     { "<Leader>cf", "<Cmd>Obsidian follow_link vsplit<cr>", desc = "Follow Link (vsplit)" },
     { "<Leader>cF", "<Cmd>Obsidian follow_link hsplit<cr>", desc = "Follow Link (hsplit)" },
-    { "<Leader>cs", "<Cmd>Obsidian quick_switch<cr>", desc = "Search Notes" },
+    { "<Leader>cs", "<Cmd>Obsidian search<cr>", desc = "Search Notes" },
     { "<Leader>cd", "<Cmd>Obsidian dailies<cr>", desc = "Open daily notes" },
     { "<Leader>cl", "<Cmd>Obsidian link_new<cr>", desc = "New link" },
     { "<Leader>cp", "<Cmd>Obsidian paste_img<cr>", desc = "Paste image" },
+    { "<Leader>cn", "<Cmd>Obsidian new<cr>", desc = "New Note" },
   },
   {
     mode = { "v" },

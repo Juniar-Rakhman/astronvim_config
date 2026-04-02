@@ -30,7 +30,8 @@ return {
         references = { includeDecompiledSources = false },
         format = {
           settings = {
-            url = os.getenv "HOME" .. "/.config/nvim/formatter/eclipse-java-custom-style.xml",
+            url = os.getenv "HOME" .. "/.config/nvim/formatter/google-java.xml",
+            -- url = os.getenv "HOME" .. "/.config/nvim/formatter/google-java-mod.xml",
             profile = "GoogleStyle",
           },
         },

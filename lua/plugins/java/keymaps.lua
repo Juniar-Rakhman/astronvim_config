@@ -36,6 +36,7 @@ wk.add {
   },
   {
     mode = { "n" },
+    { "<Leader>cc", function() jdtls.compile "full" end, desc = "Compile (full)" },
     { "<Leader>ci", function() jdtls.super_implementation() end, desc = "Go to super implementation" },
     { "<Leader>cm", function() jdtls.organize_imports() end, desc = "Extract Method" },
     { "<Leader>ct", function() jdtls.test_nearest_method() end, desc = "Test Method" },

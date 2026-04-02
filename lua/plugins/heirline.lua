@@ -1,5 +1,5 @@
 return {
-  { --- disable all <Leader>b keymaps
+  { --- disable all <Leader>b keymaps. Not using bufferline
     "AstroNvim/astrocore",
     ---@param opts AstroCoreOpts
     opts = function(_, opts)
