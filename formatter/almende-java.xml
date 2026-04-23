@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <profiles version="23">
-  <profile kind="CodeFormatterProfile" name="Eclipse" version="23">
+  <profile kind="CodeFormatterProfile" name="Almende" version="23">
     <setting id="org.eclipse.jdt.core.formatter.align_arrows_in_switch_on_columns" value="false" />
     <setting id="org.eclipse.jdt.core.formatter.align_assignment_statements_on_columns"
       value="false" />
@@ -135,7 +135,7 @@
     <setting id="org.eclipse.jdt.core.formatter.brace_position_for_type_declaration"
       value="end_of_line" />
     <setting id="org.eclipse.jdt.core.formatter.comment.align_tags_descriptions_grouped"
-      value="true" />
+      value="false" />
     <setting id="org.eclipse.jdt.core.formatter.comment.align_tags_names_descriptions" value="false" />
     <setting id="org.eclipse.jdt.core.formatter.comment.clear_blank_lines_in_block_comment"
       value="false" />
@@ -150,7 +150,7 @@
     <setting id="org.eclipse.jdt.core.formatter.comment.format_line_comments" value="true" />
     <setting id="org.eclipse.jdt.core.formatter.comment.format_markdown_comments" value="true" />
     <setting id="org.eclipse.jdt.core.formatter.comment.format_source_code" value="true" />
-    <setting id="org.eclipse.jdt.core.formatter.comment.indent_parameter_description" value="true" />
+    <setting id="org.eclipse.jdt.core.formatter.comment.indent_parameter_description" value="false" />
     <setting id="org.eclipse.jdt.core.formatter.comment.indent_root_tags" value="true" />
     <setting id="org.eclipse.jdt.core.formatter.comment.indent_tag_description" value="false" />
     <setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_before_root_tags"
@@ -158,7 +158,7 @@
     <setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_between_different_tags"
       value="do not insert" />
     <setting id="org.eclipse.jdt.core.formatter.comment.insert_new_line_for_parameter"
-      value="insert" />
+      value="do not insert" />
     <setting id="org.eclipse.jdt.core.formatter.comment.javadoc_do_not_separate_block_tags"
       value="false" />
     <setting id="org.eclipse.jdt.core.formatter.comment.line_length" value="80" />
@@ -768,3 +768,4 @@
     <setting id="org.eclipse.jdt.core.formatter.wrap_outer_expressions_when_nested" value="true" />
   </profile>
 </profiles>
+
