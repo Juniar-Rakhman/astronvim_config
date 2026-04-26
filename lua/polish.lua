@@ -56,7 +56,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("LspAttach", {
   pattern = "*.java",
   group = vim.api.nvim_create_augroup("code_keymap_java", { clear = true }),
-  callback = function(_) require "plugins.java.keymaps" end,
+  callback = function(_)
+    vim.bo.shiftwidth = 4
+    vim.bo.tabstop = 4
+    require "plugins.java.keymaps"
+  end,
 })
 
 -- enable compile on save for Java
