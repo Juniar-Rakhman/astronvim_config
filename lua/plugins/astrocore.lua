@@ -9,6 +9,25 @@ return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    treesitter = {
+      ensure_installed = { "vim", "lua" },
+      highlight = true,
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          node_decremental = "grm",
+        },
+      },
+      textobjects = {
+        select = {
+          select_textobject = {
+            ["ak"] = { query = "@block.outer", desc = "around block" },
+          },
+        },
+      },
+    },
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
@@ -55,6 +74,7 @@ return {
         cursorline = true,
         cursorcolumn = true,
         formatoptions = "cro",
+        -- guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait10-blinkon10-blinkoff10",
         -- guicursor = "a:blinkon100",
       },
       g = { -- vim.g.<key>
@@ -72,13 +92,12 @@ return {
         ["<S-l>"] = { "$", desc = "bol" },
       },
       n = {
-        -- disable builtin nvim gr* mappings, see remaps in astrolsp.lua
-        ["gr"] = false,
-        ["grr"] = false,
-        ["grn"] = false,
-        ["gra"] = false,
         -- will be used for something else
         ["go"] = false,
+
+        -- buffer navigation (v6)
+        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- navigate buffer tabs
         ["<leader>b"] = { "<cmd>Neotree buffers<cr>", desc = "Buffer list" },

@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
     local arg = vim.fn.argv(0)
     if not arg then return end
 
-    local stat = vim.loop.fs_stat(arg)
+    local stat = vim.uv.fs_stat(arg)
     if not stat then return end
 
     if stat.type == "directory" then

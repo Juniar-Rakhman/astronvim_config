@@ -9,7 +9,7 @@ return {
   ---@type AstroLSPOpts
   opts = {
     features = {
-      codelens = true, -- enable/disable codelens refresh on start
+      codelens = false, -- disable codelens by default until Neovim v0.12.1
       inlay_hints = true, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
@@ -82,12 +82,12 @@ return {
     },
     -- customize how language servers are attached
     handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-      -- function(server, opts) require("lspconfig")[server].setup(opts) end
-
       -- the key is the server that is being setup with `lspconfig`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
       -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+
+      -- default handler (Neovim v0.12+)
+      ["*"] = function(server) vim.lsp.enable(server) end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
@@ -112,7 +112,7 @@ return {
       },
       java_organize_imports = {
         cond = function(client) return client.name == "jdtls" end,
-        {
+        { -- TODO: this doesn't work
           event = "BufWritePre",
           desc = "Organize Java imports on save",
           callback = function()
@@ -165,6 +165,10 @@ return {
         ["<Leader>fn"] = {
           function() require("snacks").picker.notifications() end,
           desc = "Find Notifications",
+        },
+        ["<Leader>lw"] = {
+          function() vim.diagnostic.setqflist() end,
+          desc = "Workspace diagnostics",
         },
         ["<Leader>lG"] = {
           function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
