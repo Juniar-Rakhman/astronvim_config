@@ -41,11 +41,51 @@ return {
     -- client specific configuration can also go in `lsp/` in your configuration root (see `:h lsp-config`)
     config = {
       -- ["*"] = { capabilities = {} }, -- modify default LSP client settings such as capabilities
+
+      -- clangd
+
+      -- java
+
+      -- ts/js
+      tsserver = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "literals", -- "none" | "literals" | "all"
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "literals",
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = false,
+              includeInlayVariableTypeHints = false,
+              includeInlayPropertyDeclarationTypeHints = false,
+              includeInlayFunctionLikeReturnTypeHints = false,
+              includeInlayEnumMemberValueHints = false,
+            },
+          },
+        },
+      },
+      -- php
+      intelephense = {
+        files = {
+          maxSize = 5000000,
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
       -- a function with the key `*` modifies the default handler, functions takes the server name as the parameter
-      -- ["*"] = function(server) vim.lsp.enable(server) end
+
+      -- default handler (Neovim v0.12+)
+      ["*"] = function(server) vim.lsp.enable(server) end,
 
       -- the key is the server that is being setup with `vim.lsp.config`
       -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
@@ -81,12 +121,37 @@ return {
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
         },
+        go = {
+          function() vim.lsp.buf.incoming_calls() end,
+          desc = "Incominng Calls",
+        },
+        gd = {
+          function() require("snacks").picker.lsp_definitions() end,
+          desc = "Go to definitions",
+        },
+        gr = {
+          function() require("snacks").picker.lsp_references() end,
+          desc = "Go to references",
+        },
+        gy = {
+          function() require("snacks").picker.lsp_type_definitions() end,
+          desc = "Go to type definition",
+        },
+        gI = {
+          function() require("snacks").picker.lsp_implementations() end,
+          desc = "Go to implementations",
+        },
+
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
           cond = function(client)
             return client:supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
+        },
+        ["<Leader>lG"] = {
+          function() require("snacks").picker.lsp_workspace_symbols() end,
+          desc = "Find Workspace Symbols",
         },
       },
     },

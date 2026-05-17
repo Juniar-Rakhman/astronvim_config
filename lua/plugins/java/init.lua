@@ -43,7 +43,7 @@ return {
     })
 
     opts.handlers = {
-      -- filter out TODO diagnostics
+      -- filter out TODO from list of diagnostics
       ["textDocument/publishDiagnostics"] = function(err, result, ctx)
         if result and result.diagnostics then
           result.diagnostics = vim.tbl_filter(

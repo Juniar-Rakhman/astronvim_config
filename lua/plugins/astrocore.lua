@@ -7,15 +7,9 @@ return {
   ---@type AstroCoreOpts
   opts = {
     treesitter = {
-      ensure_installed = { "vim", "lua" },
-      highlight = true,
+      ensure_installed = { "vim", "lua", "vimdoc" },
       incremental_selection = {
         enable = true,
-        keymaps = {
-          init_selection = "gnn",
-          node_incremental = "grn",
-          node_decremental = "grm",
-        },
       },
       textobjects = {
         select = {
@@ -34,12 +28,6 @@ return {
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
-    -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-    -- diagnostics = {
-    --   virtual_text = true,
-    --   underline = true,
-    -- },
-    -- passed to `vim.filetype.add`
     filetypes = {
       -- see `:h vim.filetype.add` for usage
       extension = {
@@ -74,7 +62,7 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-        -- netrw_browsex_viewer = "/Applications/Arc.app",
+        netrw_browsex_viewer = "/Applications/Arc.app",
       },
     },
     -- Mappings can be configured through AstroCore as well.

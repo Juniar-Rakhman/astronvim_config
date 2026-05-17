@@ -55,8 +55,8 @@ return {
       -- notes_subdir = "notes",
 
       completion = {
-        nvim_cmp = true,
-        blink = false,
+        nvim_cmp = false,
+        blink = true,
       },
 
       daily_notes = {

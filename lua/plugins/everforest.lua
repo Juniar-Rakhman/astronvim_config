@@ -7,7 +7,7 @@ return {
 
     g.everforest_background = "hard"
     g.everforest_enable_italic = true
-    g.everforest_better_performance = 1
     g.everforest_dim_inactive_windows = true
+    -- g.everforest_better_performance = 1
   end,
 }
