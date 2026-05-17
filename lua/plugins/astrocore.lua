@@ -1,8 +1,5 @@
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
---
 
 ---@type LazySpec
 return {
@@ -38,10 +35,10 @@ return {
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
-    diagnostics = {
-      virtual_text = true,
-      underline = true,
-    },
+    -- diagnostics = {
+    --   virtual_text = true,
+    --   underline = true,
+    -- },
     -- passed to `vim.filetype.add`
     filetypes = {
       -- see `:h vim.filetype.add` for usage
@@ -64,24 +61,20 @@ return {
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
         conceallevel = 1, -- sets vim.opt.conceallevel
-        autoindent = true, -- sets vim.opt.autoindent
+        -- autoindent = true, -- sets vim.opt.autoindent
         winblend = 10, -- sets floating window transparency
         pumblend = 10, -- sets popup menu transparency
         expandtab = true,
-        tabstop = 2,
-        shiftwidth = 2,
         showtabline = 1,
         cursorline = true,
         cursorcolumn = true,
         formatoptions = "cro",
-        -- guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait10-blinkon10-blinkoff10",
-        -- guicursor = "a:blinkon100",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-        netrw_browsex_viewer = "/Applications/Arc.app",
+        -- netrw_browsex_viewer = "/Applications/Arc.app",
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -92,14 +85,9 @@ return {
         ["<S-l>"] = { "$", desc = "bol" },
       },
       n = {
-        -- will be used for something else
-        ["go"] = false,
-
-        -- buffer navigation (v6)
+        -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- navigate buffer tabs
         ["<leader>b"] = { "<cmd>Neotree buffers<cr>", desc = "Buffer list" },
         ["<Leader>c"] = false, -- c will be used for code related functionalities
         ["<Leader>o"] = { "<cmd>only<cr>", desc = "Only display current window" },
@@ -107,14 +95,9 @@ return {
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
 
-        ["<Leader>D"] = { group = "Database Tools" },
-        ["<Leader>Dd"] = { "<cmd>DBUIToggle<cr>", desc = "Toggle" },
-        ["<Leader>Db"] = { "<cmd>DBUIFindBuffer<cr>", desc = "Find Buffer" },
-
         -- Opencode.nvim group
         ["<Leader>O"] = { group = "Opencode" },
         ["<Leader>Ot"] = { function() require("opencode").toggle() end, desc = "Toggle opencode" },
-
         ["<Leader>OA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
         ["<Leader>Oa"] = {
           function() require("opencode").ask("@this: ", { submit = true }) end,

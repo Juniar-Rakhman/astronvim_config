@@ -4,7 +4,7 @@ return {
     ---@param opts AstroCoreOpts
     opts = function(_, opts)
       if vim.tbl_get(opts, "options", "opt", "showtabline") then opts.options.opt.showtabline = nil end
-      for k, _ in pairs(opts.mappings.n) do
+      for k, _ in pairs(opts.mappings.n) do -- disable buffer related keymappings
         if k:find "^<Leader>b" then opts.mappings.n[k] = false end
       end
     end,

@@ -1,3 +1,5 @@
+-- Customize Mason
+
 ---@type LazySpec
 return {
   -- use mason-tool-installer for automatically installing Mason packages
@@ -13,14 +15,13 @@ return {
         "dockerfile-language-server",
         "yaml-language-server",
         "bash-language-server",
-        -- "marksman", -- using obsidian
 
         -- install formatters
         "prettier",
         "stylua",
 
         -- install debuggers
-        -- "debugpy", -- not doing python yet
+        -- "debugpy",
 
         -- install any other package
         "tree-sitter-cli",

@@ -1,6 +1,4 @@
--------------------------------------------------------
--- extends astrocommunity.lsp.lsp-signature-nvim" }, --
--------------------------------------------------------
+-- extends astrocommunity.lsp.lsp-signature-nvim"
 return {
   "ray-x/lsp_signature.nvim",
   opts = {
