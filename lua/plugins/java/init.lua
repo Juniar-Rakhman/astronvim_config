@@ -2,11 +2,21 @@
 -- extends astrocommunity.pack.java
 ---------------------------------------------
 
+local function find_top_root(buf)
+  local roots = vim.fs.find("pom.xml", {
+    upward = true,
+    path = vim.api.nvim_buf_get_name(buf),
+    limit = math.huge,
+  })
+  return roots[1] and vim.fs.dirname(roots[#roots]) or nil
+end
+
 return {
   "mfussenegger/nvim-jdtls",
   opts = function(_, opts)
     -- merge user settings into existing opts
-    opts.root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", "settings.gradle" })
+    -- opts.root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", "settings.gradle" })
+    opts.root_dir = find_top_root(0)
     opts.settings = vim.tbl_deep_extend("force", opts.settings or {}, {
       java = {
         configuration = {
