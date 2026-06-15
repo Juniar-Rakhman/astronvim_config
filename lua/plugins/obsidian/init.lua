@@ -87,7 +87,7 @@ return {
       },
 
       attachments = {
-        img_folder = "assets/imgs",
+        folder = "assets",
       },
     })
   end,

@@ -6,21 +6,22 @@ return {
   "mfussenegger/nvim-jdtls",
   opts = function(_, opts)
     -- merge user settings into existing opts
+    opts.root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", "settings.gradle" })
     opts.settings = vim.tbl_deep_extend("force", opts.settings or {}, {
       java = {
         configuration = {
           runtimes = {
             {
-              name = "JavaSE-11",
-              path = os.getenv "HOME" .. "/.sdkman/candidates/java/11.0.27-tem",
+              name = "JavaSE-21",
+              path = os.getenv "HOME" .. "/.sdkman/candidates/java/21.0.1-tem",
             },
             {
               name = "JavaSE-17",
               path = os.getenv "HOME" .. "/.sdkman/candidates/java/17.0.9-tem",
             },
             {
-              name = "JavaSE-21",
-              path = os.getenv "HOME" .. "/.sdkman/candidates/java/21.0.1-tem",
+              name = "JavaSE-11",
+              path = os.getenv "HOME" .. "/.sdkman/candidates/java/11.0.27-tem",
             },
           },
         },
@@ -30,8 +31,8 @@ return {
         references = { includeDecompiledSources = false },
         format = {
           settings = {
-            url = os.getenv "HOME" .. "/.config/nvim/formatter/almende-java.xml",
-            profile = "Almende",
+            url = os.getenv "HOME" .. "/.config/nvim/formatter/savapage-java.xml",
+            profile = "SavaPage",
           },
         },
         compiler = {

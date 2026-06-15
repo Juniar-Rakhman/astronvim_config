@@ -14,6 +14,14 @@ function AttachDebugger(host, port)
   dap.continue()
 end
 
+function StartJdtls()
+  local jdtls = require "jdtls"
+  local plugin = require("lazy.core.config").plugins["nvim-jdtls"]
+  local opts = vim.deepcopy(plugin:opts())
+  opts.root_dir = vim.fs.root(0, { "pom.xml", "build.gradle", "settings.gradle" })
+  jdtls.start_or_attach(opts)
+end
+
 ---------------------------------------------------------------------------------------------------------------------
 -- Keymap for Java --
 ---------------------------------------------------------------------------------------------------------------------

@@ -12,4 +12,5 @@ return {
   { import = "astrocommunity.pack.vue" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.full-dadbod" },
+  { import = "astrocommunity.pack.php" },
 }
