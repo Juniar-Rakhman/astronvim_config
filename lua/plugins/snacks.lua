@@ -29,9 +29,19 @@ return {
         ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ]],
       },
     },
-    picker = { -- not using snacks picker atm. See telescope config
+    picker = {
       layout = {
         preset = "vertical",
+      },
+      sources = {
+        lsp_references = {
+          filter = {
+            filter = function(item) -- filter out imports and reference in comments
+              local line = item.line or "" -- prevent nil:match error
+              return not (line:match "^%s*import " or line:match "^%s*[%-/#*;]")
+            end,
+          },
+        },
       },
     },
     styles = {
