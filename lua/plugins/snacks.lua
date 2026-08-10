@@ -34,6 +34,13 @@ return {
         preset = "vertical",
       },
       sources = {
+        diagnostics = {
+          sort = {
+            fields = {
+              "severity",
+            },
+          },
+        },
         lsp_references = {
           filter = {
             filter = function(item) -- filter out imports and reference in comments

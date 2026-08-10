@@ -2,7 +2,14 @@
 
 ---@type LazySpec
 return {
-  -- use mason-tool-installer for automatically installing Mason packages
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      opts.registries = {
+        "file:/Users/jrakhman/projects/lua/mason-registry",
+      }
+    end,
+  }, -- use mason-tool-installer for automatically installing Mason packages
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- overrides `require("mason-tool-installer").setup(...)`

@@ -13,4 +13,7 @@ return {
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.php" },
+
+  -- others
+  { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
 }
