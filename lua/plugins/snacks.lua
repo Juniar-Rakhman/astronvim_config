@@ -31,7 +31,20 @@ return {
     },
     picker = {
       layout = {
-        preset = "vertical",
+        layout = {
+          box = "vertical",
+          width = 0.5,
+          min_width = 80,
+          height = 1,
+          min_height = 30,
+          border = "rounded",
+          title = "{title}",
+          title_pos = "center",
+
+          { win = "input", height = 1, border = "bottom" },
+          { win = "list", border = "none" },
+          { win = "preview", height = 0.8, border = "top" },
+        },
       },
       sources = {
         diagnostics = {
