@@ -2,6 +2,8 @@
 -- extends astrocommunity.pack.java
 ---------------------------------------------
 
+local formatters = require "plugins.java.formatters"
+
 local function find_top_root(buf)
   local roots = vim.fs.find("pom.xml", {
     upward = true,
@@ -40,10 +42,7 @@ return {
         referencesCodeLens = { enabled = false }, -- Turn this off, causes lag.
         references = { includeDecompiledSources = false },
         format = {
-          settings = {
-            url = os.getenv "HOME" .. "/.config/nvim/formatter/savapage-java.xml",
-            profile = "SavaPage",
-          },
+          settings = formatters.get_settings(),
         },
         compiler = {
           taskTags = "", -- disables task tag diagnostics entirely

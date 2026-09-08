@@ -27,6 +27,8 @@ if not jdtls_ok then return end
 local jdtls_test_ok, jdtls_test = pcall(require, "jdtls.tests")
 if not jdtls_test_ok then return end
 
+local formatters = require "plugins.java.formatters"
+
 wk.add {
   { "<Leader>c", group = "Code (Java)" },
   {
@@ -40,6 +42,7 @@ wk.add {
     { "<Leader>ci", function() jdtls.super_implementation() end, desc = "Go to super implementation" },
     { "<Leader>cm", function() jdtls.organize_imports() end, desc = "Extract Method" },
     { "<Leader>ct", function() jdtls.test_nearest_method() end, desc = "Test Method" },
+    { "<Leader>cS", function() formatters.switch_prompt() end, desc = "Switch Formatter" },
     { "<Leader>cT", function() jdtls.test_class() end, desc = "Test Class" },
     { "<Leader>ca", function() AttachDebugger("localhost", 5005) end, desc = "Attach Debugger - localhost" },
     { "<Leader>cg", function() jdtls_test.generate() end, desc = "Generate Test" },
