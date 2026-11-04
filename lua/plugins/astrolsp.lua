@@ -47,7 +47,7 @@ return {
       -- java
 
       -- ts/js
-      tsserver = {
+      ts_ls = {
         settings = {
           typescript = {
             inlayHints = {

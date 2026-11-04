@@ -1,6 +1,36 @@
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 
+local function diff_with_file()
+  local snacks_ok, snacks = pcall(require, "snacks")
+  if snacks_ok then
+    snacks.picker.files {
+      confirm = function(picker, item)
+        picker:close()
+        vim.cmd("vert diffsplit " .. vim.fn.fnameescape(item.file))
+      end,
+    }
+    return
+  end
+
+  local telescope_ok, telescope = pcall(require, "telescope")
+  if telescope_ok then
+    telescope.builtin.find_files {
+      attach_mappings = function(_, map)
+        map("i", "<CR>", function(prompt_bufnr)
+          local entry = telescope.actions.state.get_selected_entry()
+          telescope.actions.close(prompt_bufnr)
+          vim.cmd("vert diffsplit " .. vim.fn.fnameescape(entry.path))
+        end)
+        return true
+      end,
+    }
+    return
+  end
+
+  vim.notify("No picker available (snacks.nvim or telescope.nvim)", vim.log.levels.WARN)
+end
+
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
@@ -83,30 +113,23 @@ return {
         ["<Leader>tn"] = { "<cmd>tabnext<cr>", desc = "Next Tab" },
         ["<Leader>tp"] = { "<cmd>tabprevious<cr>", desc = "Previous Tab" },
 
+        -- finder
+        ["<Leader>fd"] = { function() diff_with_file() end, desc = "Diff with file" },
+
         -- Opencode.nvim group
         ["<Leader>O"] = { group = "Opencode" },
-        ["<Leader>Ot"] = { function() require("opencode").toggle() end, desc = "Toggle opencode" },
+        ["<Leader>Ot"] = {
+          function() require("snacks").terminal.toggle("opencode", { win = { position = "right", enter = false } }) end,
+          desc = "Toggle opencode",
+        },
         ["<Leader>OA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
         ["<Leader>Oa"] = {
-          function() require("opencode").ask("@this: ", { submit = true }) end,
+          function() require("opencode").ask("@this: ") end,
           desc = "Ask opencode about this",
-        },
-        ["<Leader>On"] = { function() require("opencode").command "session_new" end, desc = "New opencode session" },
-        ["<Leader>Oy"] = {
-          function() require("opencode").command "messages_copy" end,
-          desc = "Copy last opencode response",
-        },
-        ["<S-C-k>"] = {
-          function() require("opencode").command "messages_half_page_up" end,
-          desc = "Messages half page up",
-        },
-        ["<S-C-j>"] = {
-          function() require("opencode").command "messages_half_page_down" end,
-          desc = "Messages half page down",
         },
         ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
         ["<Leader>Oe"] = {
-          function() require("opencode").prompt("Explain @this and its context", { submit = true }) end,
+          function() require("opencode").prompt("Explain @this and its context") end,
           desc = "Explain this code",
         },
       },
@@ -117,7 +140,7 @@ return {
 
         -- Opencode.nvim visual mode
         ["<Leader>Oa"] = {
-          function() require("opencode").ask("@this: ", { submit = true }) end,
+          function() require("opencode").ask("@this: ") end,
           desc = "Ask opencode about selection",
         },
         ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },

@@ -22,6 +22,7 @@ return {
         "dockerfile-language-server",
         "yaml-language-server",
         "bash-language-server",
+        "json-lsp",
 
         -- install formatters
         "prettier",

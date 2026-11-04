@@ -36,7 +36,7 @@ return {
           width = 0.5,
           min_width = 80,
           height = 1,
-          min_height = 30,
+          min_height = 80,
           border = "rounded",
           title = "{title}",
           title_pos = "center",

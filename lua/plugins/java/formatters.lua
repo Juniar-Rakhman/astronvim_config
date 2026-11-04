@@ -9,6 +9,10 @@ local FORMATTERS = {
     url = os.getenv "HOME" .. "/.config/nvim/formatter/savapage-java.xml",
     profile = "SavaPage",
   },
+  google = {
+    url = os.getenv "HOME" .. "/.config/nvim/formatter/google-java.xml",
+    profile = "SavaPage",
+  },
 }
 
 M.current = "almende"

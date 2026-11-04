@@ -28,6 +28,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function() vim.api.nvim_command "Codeium Enable" end,
 })
 
+-- Treat JSONC file types as JSON so the JSON LSP attaches
+vim.filetype.add { extension = { jsonc = "json" } }
+
 -- On startup change working directory to current folder / file
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
