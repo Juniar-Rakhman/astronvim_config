@@ -1,3 +1,4 @@
+--[[
 return {
   "nickjvandyke/opencode.nvim",
   config = function()
@@ -14,3 +15,6 @@ return {
     { "folke/snacks.nvim", opts = { input = { enabled = true } } },
   },
 }
+--]]
+
+return {}

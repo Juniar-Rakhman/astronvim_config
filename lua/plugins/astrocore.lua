@@ -116,34 +116,27 @@ return {
         -- finder
         ["<Leader>fd"] = { function() diff_with_file() end, desc = "Diff with file" },
 
-        -- Opencode.nvim group
-        ["<Leader>O"] = { group = "Opencode" },
+        -- Pi group
+        ["<Leader>O"] = { group = "Pi" },
         ["<Leader>Ot"] = {
-          function() require("snacks").terminal.toggle("opencode", { win = { position = "right", enter = false } }) end,
-          desc = "Toggle opencode",
+          function() require("snacks").terminal.toggle("pi", { win = { position = "right", enter = false } }) end,
+          desc = "Toggle Pi terminal",
         },
-        ["<Leader>OA"] = { function() require("opencode").ask() end, desc = "Ask opencode" },
-        ["<Leader>Oa"] = {
-          function() require("opencode").ask("@this: ") end,
-          desc = "Ask opencode about this",
-        },
-        ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
-        ["<Leader>Oe"] = {
-          function() require("opencode").prompt("Explain @this and its context") end,
-          desc = "Explain this code",
-        },
+        ["<Leader>Oa"] = { "<cmd>Pi<cr>", desc = "Send to Pi" },
+        ["<Leader>Os"] = { "<cmd>PiSend<cr>", desc = "Send prompt to Pi" },
+        ["<Leader>Of"] = { "<cmd>PiSendFile<cr>", desc = "Send file to Pi" },
+        ["<Leader>Ob"] = { "<cmd>PiSendBuffer<cr>", desc = "Send buffer to Pi" },
+        ["<Leader>OS"] = { "<cmd>PiSessions<cr>", desc = "Pi sessions" },
+        ["<Leader>Op"] = { "<cmd>PiPing<cr>", desc = "Ping Pi" },
       },
       v = {
         ["<"] = { "<gv", desc = "Unindent line" },
         [">"] = { ">gv", desc = "Indent line" },
         ["p"] = { '"_dP', desc = "Paste without overwriting register" },
 
-        -- Opencode.nvim visual mode
-        ["<Leader>Oa"] = {
-          function() require("opencode").ask("@this: ") end,
-          desc = "Ask opencode about selection",
-        },
-        ["<Leader>Os"] = { function() require("opencode").select() end, desc = "Select opencode prompt" },
+        -- Pi visual mode
+        ["<Leader>Oa"] = { "<cmd>Pi<cr>", desc = "Send selection to Pi" },
+        ["<Leader>Os"] = { "<cmd>PiSend<cr>", desc = "Send prompt to Pi" },
       },
     },
   },

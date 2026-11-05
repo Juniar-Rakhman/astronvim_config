@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- enable compile on save for Java
+-- enable compile on save for Java -- BUG: doesn't work!
 -- vim.api.nvim_create_autocmd("BufWritePost", {
 --   pattern = { "*.java" },
 --   callback = function()
