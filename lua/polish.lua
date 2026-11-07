@@ -35,7 +35,7 @@ vim.filetype.add { extension = { jsonc = "json" } }
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     local arg = vim.fn.argv(0)
-    if not arg then return end
+    if type(arg) ~= "string" or arg == "" then return end
 
     local stat = vim.uv.fs_stat(arg)
     if not stat then return end
