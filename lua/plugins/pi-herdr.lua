@@ -1,5 +1,5 @@
 return {
-  "Juniar-Rakhman/pi-herdr",
+  "Juniar-Rakhman/pi-herdr.nvim",
   lazy = false,
   opts = {
     submit_after_send = true,
